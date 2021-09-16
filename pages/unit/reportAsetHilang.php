@@ -77,35 +77,31 @@
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content" style="color:black">
-      <div class="modal-header">
-        <a class="modal-title h5"><u>Form Pemeliharaan</u></a>
+      <div class="modal-header border-bottom p-3">
+        <a class="modal-title h4"><u>Form Pemeliharaan</u></a>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <div class="modal-body align-self-center">
-        <table class='h5'>
-          <tr>
-            <td class="text-right border-bottom-danger">Kondisi : </td>
-            <td class="pl-3"><select id="kondisi" name="kondisi">
-                <?php
-                $sql = "SELECT id, NAMA FROM kondisi WHERE ID IN (5,20) AND AKTIF = 1";
-                $query = mysqli_query($conn, $sql);
-                ?>
-                <?php if (mysqli_num_rows($query) > 0) { ?>
-                  <?php while ($row = mysqli_fetch_array($query)) { ?>
-                    <option value="<?php echo $row['id']; ?>">
-                      <?php echo $row['NAMA'] ?></option>
-                  <?php } ?>
-                <?php }
-                ?>
-              </select></td>
-          </tr>
-          <tr>
-            <td class="text-right">Keterangan : </td>
-            <td class="pl-3 pt-3"><textarea type="text" class="form-control" style="height: 150px;" name="ket" id="ket"></textarea></td>
-          </tr>
-        </table>
+      <div class="modal-body p-3">
+        <div class="h5">
+          <label>Pilih Kondisi :</label>
+          <select id="kondisi" name="kondisi">
+            <?php
+            $sql = "SELECT id, NAMA FROM kondisi WHERE ID IN (5,20) AND AKTIF = 1";
+            $query = mysqli_query($conn, $sql);
+            ?>
+            <?php if (mysqli_num_rows($query) > 0) { ?>
+              <?php while ($row = mysqli_fetch_array($query)) { ?>
+                <option value="<?php echo $row['id']; ?>">
+                  <?php echo $row['NAMA'] ?></option>
+              <?php } ?>
+            <?php }
+            ?>
+          </select><br><br>
+          <label>Keterangan :</label>
+          <textarea type="text" class="form-control" style="height: 150px;" name="ket" id="ket"></textarea>
+        </div>
         <div class="text-center">
-          <button type='submit' id='submitMaint' class="btn btn-primary larger mt-3">Submit</button>
+          <button type='submit' id='submitMaint' class="btn btn-primary larger">Submit</button>
         </div>
       </div>
     </div>
