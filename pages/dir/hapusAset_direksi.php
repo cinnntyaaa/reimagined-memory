@@ -10,16 +10,13 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Memo Penghapusan Aset</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-md h6">
+                            <hr data-content="MEMO PENGHAPUSAN ASSET BELUM DIACC" class="hr-text">
+                                <table class="table table-bordered table-md h6" style="font-size: 100%;">
                                     <thead>
                                         <tr>
                                             <th>NO</th>
@@ -48,17 +45,17 @@
                                             } while (mysqli_next_result($conn));
                                             foreach ($outp[0] as $data) {
                                                 echo "
-                                            <tr>
-                                              <td style='text-align:center;'>" . $no . "</td>
-                                              <td>$data[KODE]</td>
-                                              <td>$data[NAMA]</td>
-                                              <td>$data[kategori]</td>
-                                              <td>$data[golongan]</td>
-                                              <td>$data[tgl_beli]</td>
-                                              <td class='text-right'>" . rupiah($data['harga_beli']) . "</td>
-                                              <td class='text-right'>" . rupiah($data['nilai']) . "</td>
-                                              <td class='text-center'><button class='btn bg-transparent' onclick=view($data[ASET_ID])><img width='30px' src='../../assets/svg/view.svg'></button></td>
-                                            </tr> ";
+                                                <tr>
+                                                    <td class='text-center align-middle'>" . $no . "</td>
+                                                    <td class='align-middle'>$data[KODE]</td>
+                                                    <td class='align-middle'>$data[NAMA]</td>
+                                                    <td class='align-middle'>$data[kategori]</td>
+                                                    <td class='align-middle'>$data[golongan]</td>
+                                                    <td class='align-middle'>$data[tgl_beli]</td>
+                                                    <td class='text-right align-middle'>" . rupiah($data['harga_beli']) . "</td>
+                                                    <td class='text-right align-middle'>" . rupiah($data['nilai']) . "</td>
+                                                    <td class='text-center align-middle'><button class='btn bg-transparent' onclick=view($data[ASET_ID])><img width='30px' src='../../assets/svg/view.svg'></button></td>
+                                                </tr> ";
                                                 $no++;
                                             }
                                         }
@@ -67,6 +64,7 @@
                                 </table>
                             </div>
                             <div class="table-responsive">
+                            <hr data-content="MEMO PENGHAPUSAN ASSET TELAH DIACC" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
@@ -95,16 +93,16 @@
                                             } while (mysqli_next_result($conn));
                                             foreach ($outp[1] as $data) {
                                                 echo "
-                                            <tr>
-                                              <td style='text-align:center;'>" . $no . "</td>
-                                              <td>$data[KODE]</td>
-                                              <td>$data[NAMA]</td>
-                                              <td>$data[kategori]</td>
-                                              <td>$data[golongan]</td>
-                                              <td>$data[tgl_beli]</td>
-                                              <td class='text-right'>" . rupiah($data['harga_beli']) . "</td>
-                                              <td class='text-right'>" . rupiah($data['nilai']) . "</td>
-                                            </tr> ";
+                                                <tr>
+                                                    <td class='text-center align-middle>" . $no . "</td>
+                                                    <td class='align-middle>$data[KODE]</td>
+                                                    <td class='align-middle>$data[NAMA]</td>
+                                                    <td class='align-middle>$data[kategori]</td>
+                                                    <td class='align-middle>$data[golongan]</td>
+                                                    <td class='align-middle>$data[tgl_beli]</td>
+                                                    <td class='text-right align-middle'>" . rupiah($data['harga_beli']) . "</td>
+                                                    <td class='text-right align-middle'>" . rupiah($data['nilai']) . "</td>
+                                                </tr> ";
                                                 $no++;
                                             }
                                         }
@@ -122,20 +120,18 @@
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div class="modal-content" style="color:black">
-            <div class="modal-header">
-                <a class="modal-title h5"><u>Form Penghapusan Aset</u></a>
+        <div class="modal-content black">
+            <div class="modal-header border-bottom p-3">
+                <a class="modal-title h4"><u>Form Penghapusan Aset</u></a>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body align-self-center">
-                <table class="table" style="font-size: medium">
-                    <tr>
-                        <td style='text-align: right'>Keterangan : </td>
-                        <td><textarea id='ket' style='width:300px'></textarea></td>
-                    </tr>
-                </table>
+            <div class="modal-body p-3">
+                <div class="h5">
+                    <label>Keterangan :</label>
+                    <textarea type="text" class="form-control" style="height: 150px;" name="ket" id="ket"></textarea>
+                </div>
                 <div class="text-center">
-                    <button class='btn btn-sm bg-tomato text-white' type='submit' id="submit">Submit</button>
+                    <button class='btn btn-primary larger' type='submit' id="submit">Submit</button>
                 </div>
             </div>
         </div>
@@ -150,6 +146,7 @@ include("../unit/template/bawah.php");
     function view(asetid) {
         $("#myModal").modal("show");
         document.getElementById("submit").onclick = (function() {
+            document.getElementById('submit').setAttribute("disabled", "disabled");
             var user_id = "<?php echo $user_id ?>";
             var ket = $("#ket").val();
             $.ajax({

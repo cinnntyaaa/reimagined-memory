@@ -8,4 +8,11 @@ $label = $_POST['label'];
 
 $sql = "CALL deleteDepresiasi (" . $id_beli . "," . $dispoid . ", " . $memoid . "," . $depresi . ", " . $label . ")";
 $query = mysqli_query($conn, $sql);
+$status = mysqli_affected_rows($conn);
+if ($status <= 0) {
+    echo "Error!";
+} else {
+    echo "Berhasil Menghapus";
+}
 // echo $id_beli . $dispoid . $memoid . $depresi . $label;
+

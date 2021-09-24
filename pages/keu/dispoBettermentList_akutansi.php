@@ -10,27 +10,24 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Memo Pemeliharaan</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
+                                <hr data-content="ASET BELUM TERAPRESIASI" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
                                             <th>NO</th>
-                                            <th>KODE</th>
+                                            <!-- <th>KODE</th> -->
                                             <th>NAMA</th>
-                                            <th>KETERANGAN</th>
+                                            <!-- <th>KETERANGAN</th> -->
                                             <th>UNIT</th>
-                                            <th>KETERANGAN DISPOSISI</th>
+                                            <!-- <th>KETERANGAN DISPOSISI</th>
                                             <th>BIAYA DISPOSISI</th>
                                             <th>KETERANGAN BELI</th>
-                                            <th>BIAYA BELI</th>
+                                            <th>BIAYA BELI</th> -->
                                             <th>STATUS</th>
                                             <th>PROSES</th>
                                         </tr>
@@ -77,19 +74,43 @@
                                                     $status = "<img width='30px' height='30px' src='../../assets/svg/forward.svg' title='FORWARD'>"; #FORWARD
                                                 }
                                                 echo "
-                                                <tr>
-                                                  <td style='text-align:center;'>" . $no . "</td>
-                                                  <td>$data[kode]</td>
-                                                  <td>$data[nama]</td>
-                                                  <td>$data[keterangan]</td>
-                                                  <td>$data[unit]</td>
-                                                  <td>$data[ket_dispo]</td>
-                                                  <td class='text-right'>" . rupiah($data['biaya_dispo']) . "</td>
-                                                  <td>$data[ket_beli]</td>
-                                                  <td class='text-right'>" . rupiah($data['biaya_beli']) . "</td>
-                                                  <td class='text-center'>$status</td>
-                                                  <td class='text-center'><button class='btn bg-transparent' onclick=view($data[memoid],$data[depresid],$data[apresid])><img width='30px' src='../../assets/svg/view.svg'></button></td>
-                                                </tr> ";
+                                                <tr class='parent' id=" . $no . ">
+                                                  <td class='text-center align-middle'>" . $no . "</td>
+                                                  <td class='d-none'>$data[kode]</td>
+                                                  <td class='align-middle'>$data[nama]</td>
+                                                  <td class='d-none'>$data[keterangan]</td>
+                                                  <td class='align-middle'>$data[unit]</td>
+                                                  <td class='d-none'>$data[ket_dispo]</td>
+                                                  <td class='d-none'>" . rupiah($data['biaya_dispo']) . "</td>
+                                                  <td class='d-none'>$data[ket_beli]</td>
+                                                  <td class='d-none'>" . rupiah($data['biaya_beli']) . "</td>
+                                                  <td class='text-center align-middle'>$status</td>
+                                                  <td class='text-center align-middle'><button class='btn bg-transparent' onclick=view($data[memoid],$data[depresid],$data[apresid])><img width='30px' src='../../assets/svg/view.svg'></button></td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Kode :</td>
+                                                    <td colspan=3>$data[kode]</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Keterangan :</td>
+                                                    <td colspan=3>$data[keterangan]</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Disposisi :</td>
+                                                    <td colspan=3>$data[ket_dispo]</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Biaya Disposisi :</td>
+                                                    <td colspan=3>".rupiah($data['biaya_dispo'])."</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Keterangan Beli :</td>
+                                                    <td colspan=3>$data[ket_beli]</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Biaya Beli :</td>
+                                                    <td colspan=3>".rupiah($data['biaya_beli'])."</td>
+                                                </tr>";
                                                 $no++;
                                             }
                                         }
@@ -98,20 +119,21 @@
                                 </table>
                             </div>
                             <div class="table-responsive">
+                                <hr data-content="ASET TELAH TERAPRESIASI" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
                                             <th>NO</th>
-                                            <th>KODE</th>
+                                            <!-- <th>KODE</th> -->
                                             <th>NAMA</th>
-                                            <th>KETERANGAN</th>
+                                            <!-- <th>KETERANGAN</th> -->
                                             <th>UNIT</th>
-                                            <th>KETERANGAN DISPOSISI</th>
+                                            <!-- <th>KETERANGAN DISPOSISI</th>
                                             <th>BIAYA DISPOSISI</th>
                                             <th>KETERANGAN BELI</th>
-                                            <th>BIAYA BELI</th>
+                                            <th>BIAYA BELI</th> -->
                                             <th>STATUS</th>
-                                            <th>LABEL</th>
+                                            <!-- <th>LABEL</th> -->
                                             <th>HAPUS</th>
                                         </tr>
                                     </thead>
@@ -157,22 +179,46 @@
                                                     $status = "<img width='30px' height='30px' src='../../assets/svg/forward.svg' title='FORWARD'>"; #FORWARD
                                                 }
                                                 echo "
-                                                <tr>
-                                                <td style='text-align:center;'>" . $no . "</td>
-                                                <td>$data[kode]</td>
-                                                <td>$data[nama]</td>
-                                                <td>$data[keterangan]</td>
-                                                <td>$data[unit]</td>
-                                                <td>$data[ket_dispo]</td>
-                                                <td class='text-right'>" . rupiah($data['biaya_dispo']) . "</td>
-                                                <td>$data[ket_beli]</td>
-                                                <td class='text-right'>" . rupiah($data['biaya_beli']) . "</td>
-                                                <td class='text-center'>$status</td>
-                                                <td>$data[label]</td>
-                                                <td class='text-center'>
-                                                    <button class='btn bg-transparent' onclick=hapus($data[memo_id],$data[depresi_id],$data[apresiasi_id])><img width='30px' height='30px' src='../../assets/svg/hapus.svg'></button>
-                                                  </td>
-                                                </tr> ";
+                                                <tr class='parent' id=" . $no . ">
+                                                    <td class='text-center align-middle'>" . $no . "</td>
+                                                    <td class='d-none'>$data[kode]</td>
+                                                    <td class='align-middle'>$data[nama]</td>
+                                                    <td class='d-none'>$data[keterangan]</td>
+                                                    <td class='align-middle'>$data[unit]</td>
+                                                    <td class='d-none'>$data[ket_dispo]</td>
+                                                    <td class='d-none'>" . rupiah($data['biaya_dispo']) . "</td>
+                                                    <td class='d-none'>$data[ket_beli]</td>
+                                                    <td class='d-none'>" . rupiah($data['biaya_beli']) . "</td>
+                                                    <td class='text-center align-middle'>$status</td>
+                                                    <td class='d-none'>$data[label]</td>
+                                                    <td class='text-center align-middle'>
+                                                        <button class='btn bg-transparent' onclick=hapus($data[memo_id],$data[depresi_id],$data[apresiasi_id])><img width='30px' height='30px' src='../../assets/svg/hapus.svg'></button>
+                                                    </td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Kode :</td>
+                                                    <td colspan=3>$data[kode]</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Keterangan :</td>
+                                                    <td colspan=3>$data[keterangan]</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Disposisi :</td>
+                                                    <td colspan=3>$data[ket_dispo]</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Biaya Disposisi :</td>
+                                                    <td colspan=3>".rupiah($data['biaya_dispo'])."</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Keterangan Beli :</td>
+                                                    <td colspan=3>$data[ket_beli]</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Biaya Beli :</td>
+                                                    <td colspan=3>".rupiah($data['biaya_beli'])."</td>
+                                                </tr>";
                                                 $no++;
                                             }
                                         }
@@ -190,19 +236,21 @@
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div class="modal-content" style="color:black">
-            <div class="modal-header">
-                <a class="modal-title h5"><u>Form Apresiasi</u></a>
+        <div class="modal-content black">
+            <div class="modal-header border-bottom p-3">
+                <a class="modal-title h4"><u>Form Apresiasi</u></a>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body text-center h5">
-                Tipe :
-                <select id='tipe'>
-                    <option value='5'>VALUASI</option>
-                    <option value='4'>NON - VALUASI</option>
-                </select>
+            <div class="modal-body p-3">
+                <div class="h5 text-center">
+                    Tipe :
+                    <select id='tipe'>
+                        <option value='5'>VALUASI</option>
+                        <option value='4'>NON - VALUASI</option>
+                    </select>
+                </div>
                 <div class='text-center'>
-                    <button type='submit' id='submit' class='btn btn-primary larger text-white'>Submit</button>
+                    <button type='submit' id='submit' class='btn btn-primary larger'>Submit</button>
                 </div>
             </div>
         </div>
@@ -211,14 +259,15 @@
 <div class="modal fade" id="myModal2" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <a class="modal-title h5">Hapus Memo</a>
+        <div class="modal-content black">
+            <div class="modal-header border-bottom p-3">
+                <a class="modal-title h4"><u>Hapus Memo</u></a>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body text-center">
-                <h5>Apakah Memo Ini Akan Dihapus?</h5>
-                <button type='submit' id='delete' class="btn bg-primary larger">YA</button>
+                <div class="h5">Apakah Memo Ini Akan Dihapus?</div>
+                <button type='submit' id='delete' class="btn btn-primary larger">Ya</button>
+                <button class='btn btn-primary larger' type="button" class="close" data-dismiss="modal">Tidak</button>
             </div>
         </div>
     </div>
@@ -232,6 +281,7 @@ include("../unit/template/bawah.php");
     function view(memoid, depresid, apresid) {
         $("#myModal").modal("show");
         document.getElementById("submit").onclick = (function() {
+            document.getElementById('submit').setAttribute("disabled", "disabled");
             var tipe = $("#tipe").val();
             $.ajax({
                 url: 'approveApresiasi.php',
@@ -257,6 +307,7 @@ include("../unit/template/bawah.php");
     function hapus(memo_id, depresi_id, apresiasi_id) {
         $("#myModal2").modal("show");
         document.getElementById("delete").onclick = (function() {
+            document.getElementById('delete').setAttribute("disabled", "disabled");
             $.ajax({
                 url: 'deleteApresiasi.php',
                 type: 'POST',
@@ -273,6 +324,14 @@ include("../unit/template/bawah.php");
             });
         });
     }
+    $(document).ready(function() {
+        $('tr.parent')
+            .css("cursor", "pointer")
+            .attr("title", "Click to expand/collapse")
+            .click(function() {
+                $(this).siblings('.child-' + this.id).toggle();
+            });
+    });
 </script>
 </body>
 

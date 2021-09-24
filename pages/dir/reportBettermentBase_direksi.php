@@ -10,10 +10,6 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Laporan Memo Pemeliharaan</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -93,7 +89,7 @@
                                                         $status = "<img width='30px' height='30px' src='../../assets/svg/forward.svg' title='FORWARD'>"; #FORWARD
                                                     }
                                                     echo "
-                                                        <tr>
+                                                    <tr>
                                                         <td style='text-align:center;'>" . $no . "</td>
                                                         <td>$data[tanggal]</td>
                                                         <td>$data[kode]</td>
@@ -106,7 +102,7 @@
                                                         <td>$data[ket_beli]</td>
                                                         <td>" . rupiah($data['biaya_beli']) . "</td>
                                                         <td class='text-center'>$status</th>
-                                                        </tr> ";
+                                                    </tr> ";
                                                     $no++;
                                                 }
                                             }

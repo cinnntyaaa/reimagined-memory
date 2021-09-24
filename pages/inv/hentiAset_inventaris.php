@@ -10,10 +10,6 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Memo Penghentian Aset</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -21,7 +17,7 @@
                             <div class="table-responsive">
                                 <div class="form-inline mb-3">
                                     <form action="hentiAset_inventaris.php" method="POST">
-                                        <select class="form-control" name="unit" id="unit" style="width: fit-content;">
+                                        <select class="form-control" name="unit" id="unit">
                                             <?php
                                             $sql = "SELECT ID, NAMA FROM unit WHERE AKTIF = 1 AND MANAJERIAL = 0;";
                                             $query = mysqli_query($conn, $sql);
@@ -34,10 +30,11 @@
                                             <?php }
                                             ?>
                                         </select>
-                                        <button class="btn btn-primary larger" type='submit' name='submit'>Submit</button>
+                                        <button class="btn btn-primary larger p-2" type='submit' name='submit'>Pilih</button>
                                     </form>
                                 </div>
                                 <div class="table-responsive">
+                                    <hr data-content="MEMO PENGHENTIAN ASET TEREKOMENDASI" class="hr-text">
                                     <table class="table table-bordered table-md h6">
                                         <thead>
                                             <tr>
@@ -70,14 +67,14 @@
                                                     foreach ($outp[0] as $data) {
                                                         echo "
                                                         <tr>
-                                                            <td style='text-align:center;'>" . $no . "</td>
-                                                            <td>$data[KODE]</td>
-                                                            <td>$data[nama]</td>
-                                                            <td>$data[kategori]</td>
-                                                            <td>$data[golongan]</td>
-                                                            <td>$data[ruang]</td>
-                                                            <td>$data[kondisi]</td>
-                                                            <td class='text-center'><button class='btn bg-transparent' onclick=view($data[ASET_ID])><img width='30px' src='../../assets/svg/view.svg'></button></td>
+                                                            <td class='text-center align-middle'>" . $no . "</td>
+                                                            <td class='align-middle'>$data[KODE]</td>
+                                                            <td class='align-middle'>$data[nama]</td>
+                                                            <td class='align-middle'>$data[kategori]</td>
+                                                            <td class='align-middle'>$data[golongan]</td>
+                                                            <td class='align-middle'>$data[ruang]</td>
+                                                            <td class='align-middle'>$data[kondisi]</td>
+                                                            <td class='text-center align-middle'><button class='btn bg-transparent' onclick=view($data[ASET_ID])><img width='30px' src='../../assets/svg/view.svg'></button></td>
                                                         </tr> ";
                                                         $no++;
                                                     }
@@ -88,6 +85,7 @@
                                     </table>
                                 </div>
                                 <div class="table-responsive">
+                                    <hr data-content="MEMO PENGHENTIAN ASET TERAJUKAN" class="hr-text">
                                     <table class="table table-bordered table-md h6">
                                         <thead>
                                             <tr>
@@ -118,13 +116,13 @@
                                                     foreach ($outp[1] as $data) {
                                                         echo "
                                                     <tr>
-                                                        <td style='text-align:center;'>" . $no . "</td>
-                                                        <td>$data[KODE]</td>
-                                                        <td>$data[nama]</td>
-                                                        <td>$data[kategori]</td>
-                                                        <td>$data[golongan]</td>
-                                                        <td>$data[ruang]</td>
-                                                        <td>$data[kondisi]</td>
+                                                        <td class='text-center align-middle'>" . $no . "</td>
+                                                        <td class='align-middle'>$data[KODE]</td>
+                                                        <td class='align-middle'>$data[nama]</td>
+                                                        <td class='align-middle'>$data[kategori]</td>
+                                                        <td class='align-middle'>$data[golongan]</td>
+                                                        <td class='align-middle'>$data[ruang]</td>
+                                                        <td class='align-middle'>$data[kondisi]</td>
                                                     </tr> ";
                                                         $no++;
                                                     }
@@ -144,20 +142,18 @@
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div class="modal-content" style="color:black">
-            <div class="modal-header">
-                <a class="modal-title h5"><u>Form Penghentian Aset</u></a>
+        <div class="modal-content black">
+            <div class="modal-header border-bottom p-3">
+                <a class="modal-title h4"><u>Form Penghentian Aset</u></a>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body align-self-center">
-                <table class="table" id="henti">
-                    <tr>
-                        <td style='text-align: right; border-top:none'>Keterangan : </td>
-                        <td style='border-top:none'><textarea id='ket' style='width:300px'></textarea></td>
-                    </tr>
-                </table>
+            <div class="modal-body">
+                <div class="h5">
+                    <label>Keterangan :</label>
+                    <textarea type="text" class="form-control" style="height: 150px;" name="ket" id="ket"></textarea>
+                </div>
                 <div class="text-center">
-                    <button class='btn btn-sm bg-tomato text-white' type='submit' id="submit">Submit</button>
+                    <button class='btn btn-primary larger' type='submit' id="submit">Submit</button>
                 </div>
             </div>
         </div>
@@ -172,6 +168,7 @@ include("../unit/template/bawah.php");
     function view(asetid) {
         $("#myModal").modal("show");
         document.getElementById("submit").onclick = (function() {
+            document.getElementById('submit').setAttribute("disabled", "disabled");
             var user_id = "<?php echo $user_id ?>";
             var ket = $("#ket").val();
             $.ajax({

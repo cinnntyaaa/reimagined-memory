@@ -74,15 +74,12 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Memo Pemeliharaan</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
+                                <hr data-content="MEMO PEMELIHARAAN BELUM DIDISPOSISI" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
@@ -138,16 +135,16 @@
                                                     $status = "<img width='30px' height='30px' src='../../assets/svg/forward.svg' title='FORWARD'>"; #FORWARD
                                                 }
                                                 echo "
-                                                    <tr>
-                                                    <td style='text-align:center;'>" . $no . "</td>
-                                                    <td>$data[kode]</td>
-                                                    <td>$data[nama]</td>
-                                                    <td>$data[keterangan]</td>
-                                                    <td class='text-right'>" . rupiah($data['biaya']) . "</td>
-                                                    <td>$data[unit]</td>
-                                                    <td class='text-center'>$status</td>
-                                                    <td class='text-center'><button class='btn bg-transparent' onclick=view($data[ID])><img width='30px' src='../../assets/svg/view.svg'></button></td>
-                                                    </tr> ";
+                                                <tr>
+                                                    <td class='text-center align-middle'>" . $no . "</td>
+                                                    <td class='align-middle'>$data[kode]</td>
+                                                    <td class='align-middle'>$data[nama]</td>
+                                                    <td class='align-middle'>$data[keterangan]</td>
+                                                    <td class='text-right align-middle'>" . rupiah($data['biaya']) . "</td>
+                                                    <td class='align-middle'>$data[unit]</td>
+                                                    <td class='text-center align-middle'>$status</td>
+                                                    <td class='text-center align-middle'><button class='btn bg-transparent' onclick=view($data[ID])><img width='30px' src='../../assets/svg/view.svg'></button></td>
+                                                </tr> ";
                                                 $no++;
                                             }
                                         }
@@ -156,6 +153,7 @@
                                 </table>
                             </div>
                             <div class="table-responsive">
+                                <hr data-content="MEMO PEMELIHARAAN DITOLAK" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
@@ -211,16 +209,16 @@
                                                     $status = "<img width='30px' height='30px' src='../../assets/svg/forward.svg' title='FORWARD'>"; #FORWARD
                                                 }
                                                 echo "
-                                                    <tr>
-                                                    <td style='text-align:center;'>" . $no . "</td>
-                                                    <td>$data[kode]</td>
-                                                    <td>$data[nama]</td>
-                                                    <td>$data[keterangan]</td>
-                                                    <td class='text-right'>" . rupiah($data['biaya']) . "</td>
-                                                    <td>$data[unit]</td>
-                                                    <td>$data[ket_dispo]</td>
-                                                    <td class='text-center'>$status</td>
-                                                    </tr> ";
+                                                <tr>
+                                                    <td class='text-center align-middle'>" . $no . "</td>
+                                                    <td class='align-middle'>$data[kode]</td>
+                                                    <td class='align-middle'>$data[nama]</td>
+                                                    <td class='align-middle'>$data[keterangan]</td>
+                                                    <td class='text-right align-middle'>" . rupiah($data['biaya']) . "</td>
+                                                    <td class='align-middle'>$data[unit]</td>
+                                                    <td class='align-middle'>$data[ket_dispo]</td>
+                                                    <td class='text-center align-middle'>$status</td>
+                                                </tr> ";
                                                 $no++;
                                             }
                                         }
@@ -229,6 +227,7 @@
                                 </table>
                             </div>
                             <div class="table-responsive">
+                                <hr data-content="MEMO PEMELIHARAAN TELAH DIDISPOSISI" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
@@ -285,17 +284,89 @@
                                                     $status = "<img width='30px' height='30px' src='../../assets/svg/forward.svg' title='FORWARD'>"; #FORWARD
                                                 }
                                                 echo "
-                                                    <tr>
-                                                    <td style='text-align:center;'>" . $no . "</td>
-                                                    <td>$data[kode]</td>
-                                                    <td>$data[nama]</td>
-                                                    <td>$data[keterangan]</td>
-                                                    <td class='text-right'>" . rupiah($data['biaya']) . "</td>
-                                                    <td>$data[unit]</td>
-                                                    <td>$data[ket_dispo]</td>
-                                                    <td>" . rupiah($data['harga_dispo']) . "</td>
-                                                    <td class='text-center'>$status</td>
-                                                    </tr> ";
+                                                <tr>
+                                                    <td class='text-center align-middle'>" . $no . "</td>
+                                                    <td class='align-middle'>$data[kode]</td>
+                                                    <td class='align-middle'>$data[nama]</td>
+                                                    <td class='align-middle'>$data[keterangan]</td>
+                                                    <td class='text-right align-middle'>" . rupiah($data['biaya']) . "</td>
+                                                    <td class='align-middle'>$data[unit]</td>
+                                                    <td class='align-middle'>$data[ket_dispo]</td>
+                                                    <td class='text-center align-middle'>" . rupiah($data['harga_dispo']) . "</td>
+                                                    <td class='text-center align-middle'>$status</td>
+                                                </tr> ";
+                                                $no++;
+                                            }
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="table-responsive">
+                                <hr data-content="MEMO PEMELIHARAAN TERFORWARD" class="hr-text">
+                                <table class="table table-bordered table-md h6">
+                                    <thead>
+                                        <tr>
+                                            <th>NO</th>
+                                            <th>KODE</th>
+                                            <th>NAMA</th>
+                                            <th>KETERANGAN</th>
+                                            <th>BIAYA</th>
+                                            <th>UNIT</th>
+                                            <th>STATUS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $no = 1;
+                                        $sql = "CALL memoBettermentList_direksi(" . $user_id . ")";
+                                        $outp = array();
+                                        if (mysqli_multi_query($conn, $sql)) {
+                                            do {
+                                                // Store first result set
+                                                if ($result = mysqli_store_result($conn)) {
+                                                    $outp[] = $result->fetch_all(MYSQLI_ASSOC);
+                                                    // Fetch one and one row
+                                                }
+                                            } while (mysqli_next_result($conn));
+                                            foreach ($outp[3] as $data) {
+                                                if ($data['status'] == 0) {
+                                                    $status = "<img width='30px' height='30px' src='../../assets/svg/filter.svg' title='FILTER'>"; #FILTER
+                                                } else if ($data['status'] == 1) {
+                                                    $status = "<img width='30px' height='30px' src='../../assets/svg/sent.svg' title='SENT'>"; #SENT
+                                                } else if ($data['status'] == 2) {
+                                                    $status = "<img width='30px' height='30px' src='../../assets/svg/rekom.svg' title='REKOM'>"; #REKOM
+                                                } else if ($data['status'] == 3) {
+                                                    $status = "<img width='30px' height='30px' src='../../assets/svg/process.svg' title='PROCESS'>"; #PROCESS
+                                                } else if ($data['status'] == 4) {
+                                                    $status = "<img width='30px' height='30px' src='../../assets/svg/rejected.svg' title='REJECTED'>"; #REJECTED
+                                                } else if ($data['status'] == 5) {
+                                                    $status = "<img width='30px' height='30px' src='../../assets/svg/approved.svg' title='APPROVED'>"; #APPROVED
+                                                } else if ($data['status'] == 6) {
+                                                    $status = "<img width='30px' height='30px' src='../../assets/svg/buy_less.svg' title='BUY LESS'>"; #BUY LESS
+                                                } else if ($data['status'] == 7) {
+                                                    $status = "<img width='30px' height='30px' src='../../assets/svg/buy_complete.svg' title='BUY COMPLETE'>"; #BUY COMPLETE
+                                                } else if ($data['status'] == 8) {
+                                                    $status = "<img width='30px' height='30px' src='../../assets/svg/eval_less.svg' title='EVAL LESS'>"; #EVAL LESS
+                                                } else if ($data['status'] == 9) {
+                                                    $status = "<img width='30px' height='30px' src='../../assets/svg/eval_complete.svg' title='EVAL COMPLETE'>"; #EVAL COMPLETE
+                                                } else if ($data['status'] == 10) {
+                                                    $status = "<img width='30px' height='30px' src='../../assets/svg/done.svg' title='DELIVERED'>"; #DELIVERED
+                                                } else if ($data['status'] == 11) {
+                                                    $status = "<img width='30px' height='30px' src='../../assets/svg/pending.svg' title='PENDING'>"; #PENDING
+                                                } else if ($data['status'] == 12) {
+                                                    $status = "<img width='30px' height='30px' src='../../assets/svg/forward.svg' title='FORWARD'>"; #FORWARD
+                                                }
+                                                echo "
+                                                <tr>
+                                                    <td class='text-center align-middle'>" . $no . "</td>
+                                                    <td class='align-middle'>$data[kode]</td>
+                                                    <td class='align-middle'>$data[nama]</td>
+                                                    <td class='align-middle'>$data[keterangan]</td>
+                                                    <td class='text-right align-middle'>" . rupiah($data['biaya']) . "</td>
+                                                    <td class='align-middle'>$data[unit]</td>
+                                                    <td class='text-center align-middle'>$status</td>
+                                                </tr> ";
                                                 $no++;
                                             }
                                         }
@@ -325,8 +396,8 @@
             <div class="line"></div>
             <div class="modal-body p-0">
                 <fieldset class="show" id="tab011">
-                    <div class="bg-light">
-                        <table class="table" style="font-size:medium;">
+                    <div>
+                        <table class='table table-sm h5 mt-2'>
                             <tr>
                                 <td style='text-align: right'>Keterangan : </td>
                                 <td><textarea id='ket' style='width:300px'></textarea></td>
@@ -368,18 +439,18 @@
                                 </td>
                             </tr>
                         </table>
-                        <div class="text-center">
+                        <div class="text-center mb-2">
                             <button class='btn btn-primary larger' type='submit' id="submit">Submit</button>
                         </div>
                     </div>
                 </fieldset>
                 <fieldset id="tab021">
-                    <div class="bg-light">
-                        <table class='table table-sm h6'>
+                    <div>
+                        <table class='table table-sm h5 mt-2'>
                             <tr>
                                 <td class='align-middle text-right'>Forward Ke : </td>
                                 <td class='align-middle'>
-                                    <select class="form-control" id="forward" style="width: fit-content;">
+                                    <select id="forward" style="width: fit-content;">
                                         <?php
                                         $sql = "SELECT ID, NAMA FROM `user` WHERE PRIVILEGE_ID = 4 AND ID != 4;";
                                         $query = mysqli_query($conn, $sql);
@@ -399,7 +470,7 @@
                                 <td class='align-middle'><textarea rows='3' id='ketForward' style='width:325px'></textarea></td>
                             </tr>
                         </table>
-                        <div class='text-center mb-2 bg-light'>
+                        <div class='text-center mb-2'>
                             <button class='btn btn-primary larger' type='submit' id='submit2'>Submit</button>
                         </div>
                     </div>
@@ -419,6 +490,7 @@ include("../unit/template/bawah.php");
         $("#myModal").modal("show");
         var user_id = "<?php echo $user_id ?>";
         document.getElementById("submit").onclick = (function() {
+            document.getElementById('submit').setAttribute("disabled", "disabled");
             var ket = $("#ket").val();
             var harga2 = $("#harga").val();
             var harga = harga2.replace(/[^,\d]/g, "");
@@ -446,6 +518,7 @@ include("../unit/template/bawah.php");
             });
         })
         document.getElementById("submit2").onclick = (function() {
+            document.getElementById('submit2').setAttribute("disabled", "disabled");
             var ketForward = $("#ketForward").val();
             var forward = $("#forward").val();
             $.ajax({

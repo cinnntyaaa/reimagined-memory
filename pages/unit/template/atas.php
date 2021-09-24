@@ -61,15 +61,25 @@ function rupiah($angka)
             font-family: "Poppins", sans-serif;
         }
 
-        /* #memo label,
-        #unit, */
+        .btn {
+            font-weight: 200;
+        }
+
         .larger {
             font-size: larger;
         }
 
+        .form-group>label {
+            font-size: larger;
+            font-weight: 200;
+        }
+
         .table {
-            vertical-align: middle;
             color: black;
+        }
+
+        .black {
+            color:black;
         }
 
         .table th {
@@ -84,7 +94,7 @@ function rupiah($angka)
             position: relative;
             border: none;
             height: 1px;
-            background: grey;
+            background: black;
             text-align: -webkit-center;
         }
 
@@ -100,6 +110,7 @@ function rupiah($angka)
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            color: black;
         }
 
         .inputView {
@@ -132,6 +143,11 @@ function rupiah($angka)
 
         textarea {
             border-radius: 5px;
+        }
+        #disposisi_view td,
+        #depres td {
+            padding: 0.2rem;
+            vertical-align: middle;
         }
     </style>
 </head>
@@ -234,7 +250,7 @@ function rupiah($angka)
                                     <li class="coba"><a class="nav-link" href="/assetku/pages/laporan/data_induk_aset.php">Data Induk Aset</a></li>
                                     <li class="coba"><a class="nav-link" href="/assetku/pages/keu/#.php">Data Aset Ruangan</a></li>
                                     <li class="coba"><a class="nav-link" href="/assetku/pages/keu/#.php">Data Non Aset</a></li>
-                                    <li class="coba"><a class="nav-link" href="/assetku/pages/keu/#.php">Laporan Kegiatan Lelang</a></li>
+                                    <li class="coba"><a class="nav-link" href="/assetku/pages/keu/#.php">Laporan Lelang</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -276,7 +292,7 @@ function rupiah($angka)
                                     <li class="coba"><a class="nav-link" href="/assetku/pages/dir/#.php">Data Induk Aset</a></li>
                                     <li class="coba"><a class="nav-link" href="/assetku/pages/dir/#.php">Data Aset Ruangan</a></li>
                                     <li class="coba"><a class="nav-link" href="/assetku/pages/dir/#.php">Data Non Aset</a></li>
-                                    <li class="coba"><a class="nav-link" href="/assetku/pages/dir/#.php">Laporan Kegiatan Lelang</a></li>
+                                    <li class="coba"><a class="nav-link" href="/assetku/pages/dir/#.php">Laporan Lelang</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -425,7 +441,7 @@ function rupiah($angka)
                                     <li class="coba"><a class="nav-link" href="/assetku/pages/laporan/data_induk_aset.php">Data Induk Aset</a></li>
                                     <li class="coba"><a class="nav-link" href="/assetku/pages/laporan/data_aset_ruangan.php">Data Aset Ruangan</a></li>
                                     <li class="coba"><a class="nav-link" href="/assetku/pages/laporan/data_non_aset.php">Data Non Aset</a></li>
-                                    <li class="coba"><a class="nav-link" href="/assetku/pages/laporan/laporan_kegiatan_lelang.php">Laporan Kegiatan Lelang</a></li>
+                                    <li class="coba"><a class="nav-link" href="/assetku/pages/laporan/laporan_kegiatan_lelang.php">Laporan Lelang</a></li>
                                 </ul>
                             </li>
                         </ul>

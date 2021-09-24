@@ -10,10 +10,6 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Laporan Memo Depresiasi</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -29,19 +25,20 @@
                                 <button type="submit" name="submit" id="submit" class="btn btn-primary p-2 ml-2 larger">Cari</button>
                             </form>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-md h6">
+                                <hr data-content="LAPORAN ASET TERDEPRESIASI" class="hr-text">
+                                <table class="table table-bordered table-md" style="font-size:105%">
                                     <thead>
                                         <tr>
                                             <th>NO</th>
                                             <th>TANGGAL</th>
                                             <th>KODE</th>
                                             <th>NAMA</th>
-                                            <th>NOMOR SERI</th>
+                                            <!-- <th>NOMOR SERI</th> -->
                                             <th>HARGA</th>
                                             <th>TAHUN EFEKTIF</th>
                                             <th>NILAI SUSUT</th>
-                                            <th>KATEGORI</th>
-                                            <th>GOLONGAN</th>
+                                            <!-- <th>KATEGORI</th>
+                                            <th>GOLONGAN</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -64,18 +61,30 @@
                                                 } while (mysqli_next_result($conn));
                                                 foreach ($outp[0] as $data) {
                                                     echo "
-                                    <tr>
-                                    <td style='text-align:center;'>" . $no . "</td>
-                                    <td>$data[TANGGAL]</td>
-                                    <td>$data[KODE]</td>
-                                    <td>$data[NAMA]</td>
-                                    <td>$data[NOMOR_SERI]</td>
-                                    <td class='text-right'>" . rupiah($data['harga']) . "</td>
-                                    <td>$data[thn_efektif]</td>
-                                    <td>$data[susut]</td>
-                                    <td>$data[kategori]</td>
-                                    <td>$data[golongan]</td>
-                                    </tr> ";
+                                                    <tr class='parent' id=" . $no . ">
+                                                        <td style='text-align:center;'>" . $no . "</td>
+                                                        <td>$data[TANGGAL]</td>
+                                                        <td>$data[KODE]</td>
+                                                        <td>$data[NAMA]</td>
+                                                        <td class='d-none'>$data[NOMOR_SERI]</td>
+                                                        <td class='text-right'>" . rupiah($data['harga']) . "</td>
+                                                        <td>$data[thn_efektif]</td>
+                                                        <td>$data[susut]</td>
+                                                        <td class='d-none'>$data[kategori]</td>
+                                                        <td class='d-none'>$data[golongan]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td colspan=2>Nomor Seri :</td>
+                                                        <td colspan=5>$data[NOMOR_SERI]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td colspan=2>Kategori :</td>
+                                                        <td colspan=5>$data[kategori]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td colspan=2>Golongan :</td>
+                                                        <td colspan=5>$data[golongan]</td>
+                                                    </tr>";
                                                     $no++;
                                                 }
                                             }
@@ -85,18 +94,19 @@
                                 </table>
                             </div>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-md h6">
+                                <hr data-content="LAPORAN NON ASET" class="hr-text">
+                                <table class="table table-bordered table-md" style="font-size: 105%;">
                                     <thead>
                                         <tr>
                                             <th>NO</th>
                                             <th>TANGGAL</th>
                                             <th>NAMA</th>
-                                            <th>NOMOR SERI</th>
+                                            <!-- <th>NOMOR SERI</th> -->
                                             <th>HARGA</th>
                                             <th>TAHUN EFEKTIF</th>
                                             <th>NILAI SUSUT</th>
-                                            <th>KATEGORI</th>
-                                            <th>GOLONGAN</th>
+                                            <!-- <th>KATEGORI</th>
+                                            <th>GOLONGAN</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -107,7 +117,7 @@
                                             $tgl_akhir = $_POST['tgl_akhir'];
                                             $submit = $_POST['submit'];
                                             $no = 1;
-                                            $sql = "CALL reportDepresiasi_akuntasi('" . $tgl_awal . "','" . $tgl_akhir . "')";
+                                            $sql = "CALL reportDepresiasi_akutansi('" . $tgl_awal . "','" . $tgl_akhir . "')";
                                             $outp = array();
                                             if (mysqli_multi_query($conn, $sql)) {
                                                 do {
@@ -119,17 +129,29 @@
                                                 } while (mysqli_next_result($conn));
                                                 foreach ($outp[1] as $data) {
                                                     echo "
-                                    <tr>
-                                    <td style='text-align:center;'>" . $no . "</td>
-                                    <td>$data[TANGGAL]</td>
-                                    <td>$data[NAMA]</td>
-                                    <td>$data[NOMOR_SERI]</td>
-                                    <td class='text-right'>" . rupiah($data['harga']) . "</td>
-                                    <td>$data[thn_efektif]</td>
-                                    <td>$data[susut]</td>
-                                    <td>$data[kategori]</td>
-                                    <td>$data[golongan]</td>
-                                    </tr> ";
+                                                    <tr class='parent' id=" . $no . ">
+                                                        <td class='text-center align-middle'>" . $no . "</td>
+                                                        <td class='align-middle'>$data[TANGGAL]</td>
+                                                        <td class='align-middle'>$data[NAMA]</td>
+                                                        <td class='d-none'>$data[NOMOR_SERI]</td>
+                                                        <td class='text-right align-middle'>" . rupiah($data['harga']) . "</td>
+                                                        <td class='align-middle'>$data[thn_efektif]</td>
+                                                        <td class='align-middle'>$data[susut]</td>
+                                                        <td class='d-none'>$data[kategori]</td>
+                                                        <td class='d-none'>$data[golongan]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td colspan=2>Nomor Seri :</td>
+                                                        <td colspan=5>$data[NOMOR_SERI]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td colspan=2>Kategori :</td>
+                                                        <td colspan=5>$data[kategori]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td colspan=2>Golongan :</td>
+                                                        <td colspan=5>$data[golongan]</td>
+                                                    </tr>";
                                                     $no++;
                                                 }
                                             }
@@ -157,6 +179,14 @@
             format: "yyyy-mm-dd",
             autoclose: true,
         });
+    });
+    $(document).ready(function() {
+        $('tr.parent')
+            .css("cursor", "pointer")
+            .attr("title", "Click to expand/collapse")
+            .click(function() {
+                $(this).siblings('.child-' + this.id).toggle();
+            });
     });
 </script>
 </body>

@@ -10,10 +10,6 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Laporan Aset Lelang</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -35,13 +31,13 @@
                                             <th>NO</th>
                                             <th>KODE</th>
                                             <th>NAMA</th>
-                                            <th>KATEGORI</th>
+                                            <!-- <th>KATEGORI</th>
                                             <th>GOLONGAN</th>
                                             <th>TANGGAL BELI</th>
-                                            <th>HARGA BELI</th>
+                                            <th>HARGA BELI</th> -->
                                             <th>HARGA LELANG</th>
-                                            <th>NILAI</th>
-                                            <th>KETERANGAN</th>
+                                            <!-- <th>NILAI</th>
+                                            <th>KETERANGAN</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,18 +51,42 @@
                                             $query = mysqli_query($conn, $sql);
                                             while ($data = mysqli_fetch_array($query)) {
                                                 echo "
-                                                        <tr>
-                                                        <td style='text-align:center;'>" . $no . "</td>
-                                                        <td>$data[KODE]</td>
-                                                        <td>$data[NAMA]</td>
-                                                        <td>$data[kategori]</td>
-                                                        <td>$data[golongan]</td>
-                                                        <td>$data[tgl_beli]</td>
-                                                        <td>" . rupiah($data['harga_beli']) . "</td>
-                                                        <td>" . rupiah($data['harga_lelang']) . "</td>
-                                                        <td>" . rupiah($data['nilai']) . "</td>
-                                                        <td>$data[KETERANGAN]</td>
-                                                        </tr> ";
+                                                <tr class='parent' id=" . $no . ">
+                                                    <td class='text-center align-middle'>" . $no . "</td>
+                                                    <td class='align-middle'>$data[KODE]</td>
+                                                    <td class='align-middle'>$data[NAMA]</td>
+                                                    <td class='d-none'>$data[kategori]</td>
+                                                    <td class='d-none'>$data[golongan]</td>
+                                                    <td class='d-none'>$data[tgl_beli]</td>
+                                                    <td class='d-none'>" . rupiah($data['harga_beli']) . "</td>
+                                                    <td class='align-middle'>" . rupiah($data['harga_lelang']) . "</td>
+                                                    <td class='d-none'>" . rupiah($data['nilai']) . "</td>
+                                                    <td class='d-none'>$data[KETERANGAN]</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td>Kategori :</td>
+                                                    <td colspan=3>$data[kategori]</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td>Golongan :</td>
+                                                    <td colspan=3>$data[golongan]</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td>Tgl Beli :</td>
+                                                    <td colspan=3>$data[tgl_beli]</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td>Harga Beli :</td>
+                                                    <td colspan=3>" . rupiah($data['harga_beli']) . "</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td>Nilai :</td>
+                                                    <td colspan=3>" . rupiah($data['nilai']) . "</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td>Keterangan :</td>
+                                                    <td colspan=3>$data[KETERANGAN]</td>
+                                                </tr>";
                                                 $no++;
                                             }
                                         }
@@ -93,6 +113,14 @@
             format: "yyyy-mm-dd",
             autoclose: true,
         });
+    });
+    $(document).ready(function() {
+        $('tr.parent')
+            .css("cursor", "pointer")
+            .attr("title", "Click to expand/collapse")
+            .click(function() {
+                $(this).siblings('.child-' + this.id).toggle();
+            });
     });
 </script>
 </body>

@@ -10,15 +10,12 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Memo Depresiasi</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
+                                <hr data-content="ASET BELUM TERDEPRESIASI" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
@@ -46,14 +43,12 @@
                                             foreach ($outp[0] as $data) {
                                                 echo "
                                                 <tr>
-                                                    <td style='text-align:center;'>" . $no . "</td>
-                                                    <td>$data[TANGGAL]</td>
-                                                    <td>$data[NAMA]</td>
-                                                    <td>$data[NOMOR_SERI]</td>
-                                                    <td class='text-right'>" . rupiah($data['harga']) . "</td>
-                                                    <td class='text-center'>
-                                                        <button class='btn bg-transparent' onclick=view($data[idbeli],$data[dispoid],$data[memoid])><img width='30px' height='30px' src='../../assets/svg/view.svg'></button>
-                                                    </td>
+                                                    <td class='text-center align-middle'>" . $no . "</td>
+                                                    <td class='align-middle'>$data[TANGGAL]</td>
+                                                    <td class='align-middle'>$data[NAMA]</td>
+                                                    <td class='align-middle'>$data[NOMOR_SERI]</td>
+                                                    <td class='text-right align-middle'>" . rupiah($data['harga']) . "</td>
+                                                    <td class='text-center align-middle'><button class='btn bg-transparent' onclick=view($data[idbeli],$data[dispoid],$data[memoid])><img width='30px' src='../../assets/svg/view.svg'></button></td>
                                                 </tr> ";
                                                 $no++;
                                             }
@@ -63,6 +58,7 @@
                                 </table>
                             </div>
                             <div class="table-responsive">
+                                <hr data-content="ASET TELAH TERDEPRESIASI" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
@@ -92,14 +88,14 @@
                                             foreach ($outp[1] as $data) {
                                                 echo "
                                                 <tr>
-                                                  <td style='text-align:center;'>" . $no . "</td>
-                                                  <td>$data[TANGGAL]</td>
-                                                  <td>$data[NAMA]</td>
-                                                  <td>$data[NOMOR_SERI]</td>
-                                                  <td class='text-right'>" . rupiah($data['harga']) . "</td>
-                                                  <td>$data[thn_efektif]</td>
-                                                  <td>$data[susut]</td>
-                                                  <td class='text-center'>
+                                                  <td class='text-center align-middle'>" . $no . "</td>
+                                                  <td class='align-middle'>$data[TANGGAL]</td>
+                                                  <td class='align-middle'>$data[NAMA]</td>
+                                                  <td class='align-middle'>$data[NOMOR_SERI]</td>
+                                                  <td class='text-right align-middle'>" . rupiah($data['harga']) . "</td>
+                                                  <td class='align-middle'>$data[thn_efektif]</td>
+                                                  <td class='align-middle'>$data[susut]</td>
+                                                  <td class='text-center align-middle'>
                                                     <button class='btn bg-transparent' onclick=hapus($data[idbeli],$data[dispoid],$data[memoid],$data[depresiasi_id],$data[label])><img width='30px' src='../../assets/svg/hapus.svg'></button>
                                                   </td>
                                                 </tr> ";
@@ -120,71 +116,72 @@
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div class="modal-content" style="color:black">
-            <div class="modal-header">
-                <a class="modal-title h5"><u>Form Depresiasi</u></a>
+        <div class="modal-content black">
+            <div class="modal-header border-bottom p-3">
+                <a class="modal-title h4"><u>Form Depresiasi</u></a>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body align-self-center">
-                <table class="table m-0" id='depres'>
-                    <tr>
-                        <td style='text-align: right; border-top:none;'>Tahun Efektif : </td>
-                        <td style='border-top:none;'><input class='inputView' id='tahun' autocomplete="off"></td>
-                    </tr>
-                    <tr>
-                        <td style='text-align: right'>Nilai Susut : </td>
-                        <td><span id='nilai_susut' autocomplete="off"></span></td>
-                    </tr>
-                    <tr style="display: none;">
-                        <td style='text-align: right'>Jenis : </td>
-                        <td><select id='jenis'>
-                                ";
-                                ?>
-                                <?php
-                                $sql = "SELECT * FROM jenis;";
-                                $query = mysqli_query($conn, $sql);
-                                ?>
-                                <?php if (mysqli_num_rows($query) > 0) { ?>
-                                    <?php while ($row = mysqli_fetch_array($query)) { ?>
-                                        <option value="<?php echo $row['ID']; ?>">
-                                            <?php echo $row['NAMA'] ?></option>
-                                    <?php } ?>
-                                <?php }
-                                echo "
+                <div class="h5">
+                    <table class="table m-0" id='depres'>
+                        <tr>
+                            <td style='text-align: right; border-top:none;'>Tahun Efektif : </td>
+                            <td style='border-top:none;'><input class='inputView' id='tahun' autocomplete="off"></td>
+                        </tr>
+                        <tr>
+                            <td style='text-align: right'>Nilai Susut : </td>
+                            <td><span id='nilai_susut' autocomplete="off"></span></td>
+                        </tr>
+                        <tr style="display: none;">
+                            <td style='text-align: right'>Jenis : </td>
+                            <td><select id='jenis'>
+                                    ";
+                                    ?>
+                                    <?php
+                                    $sql = "SELECT * FROM jenis;";
+                                    $query = mysqli_query($conn, $sql);
+                                    ?>
+                                    <?php if (mysqli_num_rows($query) > 0) { ?>
+                                        <?php while ($row = mysqli_fetch_array($query)) { ?>
+                                            <option value="<?php echo $row['ID']; ?>">
+                                                <?php echo $row['NAMA'] ?></option>
+                                        <?php } ?>
+                                    <?php }
+                                    echo "
                 </select></td></tr>
                 <tr>
                     <td style='text-align: right'>Kategori : </td>
                     <td><select id='kategori'>
                 ";
-                                ?>
-                                <?php
-                                $sql = "SELECT * FROM kategori;";
-                                $query = mysqli_query($conn, $sql);
-                                ?>
-                                <?php if (mysqli_num_rows($query) > 0) { ?>
-                                    <?php while ($row = mysqli_fetch_array($query)) { ?>
-                                        <option value="<?php echo $row['ID']; ?>">
-                                            <?php echo $row['NAMA'] ?></option>
-                                    <?php } ?>
-                                <?php }
-                                echo "
+                                    ?>
+                                    <?php
+                                    $sql = "SELECT * FROM kategori;";
+                                    $query = mysqli_query($conn, $sql);
+                                    ?>
+                                    <?php if (mysqli_num_rows($query) > 0) { ?>
+                                        <?php while ($row = mysqli_fetch_array($query)) { ?>
+                                            <option value="<?php echo $row['ID']; ?>">
+                                                <?php echo $row['NAMA'] ?></option>
+                                        <?php } ?>
+                                    <?php }
+                                    echo "
                 </select></td></tr>
                 <tr>
                     <td style='text-align: right'>Golongan : </td>
                     <td><select id='gol'>
                 ";
-                                ?>
-                                <?php
-                                $sql = "SELECT * FROM golongan;";
-                                $query = mysqli_query($conn, $sql);
-                                ?>
-                                <?php if (mysqli_num_rows($query) > 0) { ?>
-                                    <?php while ($row = mysqli_fetch_array($query)) { ?>
-                                        <option value="<?php echo $row['ID']; ?>">
-                                            <?php echo $row['NAMA'] ?></option>
-                                    <?php } ?>
-                                <?php }
-                                echo "
+                                    ?>
+                                    <?php
+                                    $sql = "SELECT * FROM golongan;";
+                                    $query = mysqli_query($conn, $sql);
+                                    ?>
+                                    <?php if (mysqli_num_rows($query) > 0) { ?>
+                                        <?php while ($row = mysqli_fetch_array($query)) { ?>
+                                            <option value="<?php echo $row['ID']; ?>">
+                                                <?php echo $row['NAMA'] ?></option>
+                                        <?php } ?>
+                                    <?php }
+                                    echo "
                 </select></td></tr>
                 <tr>
                     <td style='text-align: right'>Tipe : </td>
@@ -196,102 +193,107 @@
                     </td>
                 </tr>                
             </table>
+            </div>
             <div class='text-center'>
             <button type='submit' id='submit' class='btn btn-primary larger'>Submit</button>
             </div>
             ";
-                                ?>
+                                    ?>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="modal fade" id="myModal2" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <a class="modal-title h5">Hapus Memo</a>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body text-center">
-                <h5>Apakah Memo Ini Akan Dihapus?</h5>
-                <button type='submit' id='delete' class="btn bg-primary larger">YA</button>
+    <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content black">
+                <div class="modal-header border-bottom p-3">
+                    <a class="modal-title h4"><u>Hapus Memo</u></a>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="h5">Apakah Memo Ini Akan Dihapus?</div>
+                    <button type='submit' id='delete' class="btn btn-primary larger">Ya</button>
+                    <button class='btn btn-primary larger' type="button" class="close" data-dismiss="modal">Tidak</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<?php
-include("../unit/template/bawah.php");
-?>
+    <?php
+    include("../unit/template/bawah.php");
+    ?>
 
-<!-- Page Specific JS File -->
-<script>
-    function view(idbeli, id_dispo, idmemo) {
-        $("#myModal").modal("show");
-        $(document).ready(function() {
-            $('#tahun').keyup(function(event) {
-                var tahun = isNaN(Number($('#tahun').val())) ? 0 : Number($('#tahun').val());
-                var hasilAkhir = 100 / tahun;
-                $('#nilai_susut').text(hasilAkhir);
+    <!-- Page Specific JS File -->
+    <script>
+        function view(idbeli, id_dispo, idmemo) {
+            $("#myModal").modal("show");
+            $(document).ready(function() {
+                $('#tahun').keyup(function(event) {
+                    var tahun = isNaN(Number($('#tahun').val())) ? 0 : Number($('#tahun').val());
+                    var hasilAkhir = 100 / tahun;
+                    $('#nilai_susut').text(hasilAkhir);
+                });
+
             });
-
-        });
-        document.getElementById("submit").onclick = (function() {
-            var tahun = $("#tahun").val();
-            var nisut = $("#nilai_susut").text();
-            var jenis = $("#jenis").val();
-            var kategori = $("#kategori").val();
-            var gol = $("#gol").val();
-            var tipe = $("#tipe").val();
-            console.log(tahun, nisut, idbeli, id_dispo, idmemo, jenis, kategori, gol, tipe);
-            $.ajax({
-                url: 'createDepresiasi.php',
-                type: 'POST',
-                data: {
-                    idbeli: idbeli,
-                    id_dispo: id_dispo,
-                    idmemo: idmemo,
-                    tahun: tahun,
-                    nisut: nisut,
-                    jenis: jenis,
-                    gol: gol,
-                    kategori: kategori,
-                    tipe: tipe
-                },
-                dataType: 'html',
-                success: function(data) {
-                    location.reload();
-                    // console.log(data)
-                },
-                error: function() {
-                    alert("Something went wrong!");
-                }
+            document.getElementById("submit").onclick = (function() {
+                document.getElementById('submit').setAttribute("disabled", "disabled");
+                var tahun = $("#tahun").val();
+                var nisut = $("#nilai_susut").text();
+                var jenis = $("#jenis").val();
+                var kategori = $("#kategori").val();
+                var gol = $("#gol").val();
+                var tipe = $("#tipe").val();
+                console.log(tahun, nisut, idbeli, id_dispo, idmemo, jenis, kategori, gol, tipe);
+                $.ajax({
+                    url: 'createDepresiasi.php',
+                    type: 'POST',
+                    data: {
+                        idbeli: idbeli,
+                        id_dispo: id_dispo,
+                        idmemo: idmemo,
+                        tahun: tahun,
+                        nisut: nisut,
+                        jenis: jenis,
+                        gol: gol,
+                        kategori: kategori,
+                        tipe: tipe
+                    },
+                    dataType: 'html',
+                    success: function(data) {
+                        location.reload();
+                        // console.log(data)
+                    },
+                    error: function() {
+                        alert("Something went wrong!");
+                    }
+                });
             });
-        });
-    }
+        }
 
-    function hapus(id_beli, dispoid, memoid, depresi, label) {
-        $("#myModal2").modal("show");
-        document.getElementById("delete").onclick = (function() {
-            $.ajax({
-                url: 'deleteDepresiasi.php',
-                type: 'POST',
-                data: {
-                    id_beli: id_beli,
-                    dispoid: dispoid,
-                    memoid: memoid,
-                    depresi: depresi,
-                    label: label
-                },
-                dataType: 'html',
-                success: function(data) {
-                    location.reload();
-                    // console.log(data);
-                }
+        function hapus(id_beli, dispoid, memoid, depresi, label) {
+            $("#myModal2").modal("show");
+            document.getElementById("delete").onclick = (function() {
+                document.getElementById('delete').setAttribute("disabled", "disabled");
+                $.ajax({
+                    url: 'deleteDepresiasi.php',
+                    type: 'POST',
+                    data: {
+                        id_beli: id_beli,
+                        dispoid: dispoid,
+                        memoid: memoid,
+                        depresi: depresi,
+                        label: label
+                    },
+                    dataType: 'html',
+                    success: function(data) {
+                        alert(data);
+                        location.reload();
+                        // console.log(data);
+                    }
+                });
             });
-        });
-    }
-</script>
-</body>
+        }
+    </script>
+    </body>
 
-</html>
+    </html>

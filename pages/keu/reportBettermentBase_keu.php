@@ -10,10 +10,6 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Laporan Memo Pemeliharaan</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -34,15 +30,15 @@
                                         <tr>
                                             <th>NO</th>
                                             <th>TANGGAL</th>
-                                            <th>KODE</th>
+                                            <!-- <th>KODE</th> -->
                                             <th>NAMA</th>
-                                            <th>KETERANGAN</th>
-                                            <th>BIAYA MEMO</th>
+                                            <!-- <th>KETERANGAN</th>
+                                            <th>BIAYA MEMO</th> -->
                                             <th>UNIT</th>
-                                            <th>KETERANGAN DISPOSISI</th>
+                                            <!-- <th>KETERANGAN DISPOSISI</th>
                                             <th>BIAYA DISPOSISI</th>
                                             <th>KETERANGAN BELI</th>
-                                            <th>BIAYA BELI</th>
+                                            <th>BIAYA BELI</th> -->
                                             <th>STATUS</th>
                                         </tr>
                                     </thead>
@@ -92,20 +88,48 @@
                                                         $status = "<img width='30px' height='30px' src='../../assets/svg/forward.svg' title='FORWARD'>"; #FORWARD
                                                     }
                                                     echo "
-                                    <tr>
-                                    <td style='text-align:center;'>" . $no . "</td>
-                                    <td>$data[tanggal]</td>
-                                    <td>$data[kode]</td>
-                                    <td>$data[nama]</td>
-                                    <td>$data[keterangan]</td>
-                                    <td>" . rupiah($data['biaya_memo']) . "</td>
-                                    <td>$data[unit]</td>
-                                    <td>$data[ket_dispo]</td>
-                                    <td>" . rupiah($data['biaya_dispo']) . "</td>
-                                    <td>$data[ket_beli]</td>
-                                    <td>" . rupiah($data['biaya_beli']) . "</td>
-                                    <td class='text-center'>$status</th>
-                                    </tr> ";
+                                                    <tr class='parent' id=" . $no . ">
+                                                        <td class='text-center align-middle'>" . $no . "</td>
+                                                        <td class='align-middle'>$data[tanggal]</td>
+                                                        <td class='d-none'>$data[kode]</td>
+                                                        <td class='align-middle'>$data[nama]</td>
+                                                        <td class='d-none'>$data[keterangan]</td>
+                                                        <td class='d-none'>" . rupiah($data['biaya_memo']) . "</td>
+                                                        <td class='align-middle'>$data[unit]</td>
+                                                        <td class='d-none'>$data[ket_dispo]</td>
+                                                        <td class='d-none'>" . rupiah($data['biaya_dispo']) . "</td>
+                                                        <td class='d-none'>$data[ket_beli]</td>
+                                                        <td class='d-none'>" . rupiah($data['biaya_beli']) . "</td>
+                                                        <td class='text-center align-middle'>$status</th>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td colspan=2>Kode :</td>
+                                                        <td colspan=3>$data[kode]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td colspan=2>Keterangan :</td>
+                                                        <td colspan=3>$data[keterangan]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td colspan=2>Biaya Memo :</td>
+                                                        <td colspan=3>" . rupiah($data['biaya_memo']) . "</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td colspan=2>Disposisi :</td>
+                                                        <td colspan=3>$data[ket_dispo]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td colspan=2>Biaya Disposisi :</td>
+                                                        <td colspan=3>" . rupiah($data['biaya_dispo']) . "</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td colspan=2>Keterangan Beli :</td>
+                                                        <td colspan=3>$data[ket_beli]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td colspan=2>Biaya Beli :</td>
+                                                        <td colspan=3>" . rupiah($data['biaya_beli']) . "</td>
+                                                    </tr>";
                                                     $no++;
                                                 }
                                             }
@@ -133,6 +157,14 @@
             format: "yyyy-mm-dd",
             autoclose: true,
         });
+    });
+    $(document).ready(function() {
+        $('tr.parent')
+            .css("cursor", "pointer")
+            .attr("title", "Click to expand/collapse")
+            .click(function() {
+                $(this).siblings('.child-' + this.id).toggle();
+            });
     });
 </script>
 </body>

@@ -5,7 +5,7 @@ $userid = $_POST['user_id'];
 $harga = $_POST['harga_rekom'];
 $ket = $_POST['ket'];
 $forward = $_POST['forward'];
-$folder = "file/";
+$folder = "../../file/";
 $nama_file = $_FILES['fileupload']['name'];
 $file = $folder . $nama_file;
 
@@ -14,7 +14,7 @@ $namaFile = $_FILES['fileupload']['name'];
 $namaSementara = $_FILES['fileupload']['tmp_name'];
 
 // tentukan lokasi file akan dipindahkan
-$dirUpload = "file/";
+$dirUpload = "../../file/";
 
 $temp = explode(".", $_FILES["fileupload"]["name"]);
 $newfilename = round(microtime(true)) . '.' . end($temp);

@@ -10,10 +10,6 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Laporan Memo Pemeliharaan</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -89,13 +85,13 @@
                                                     }
                                                     echo "
                                                         <tr>
-                                                        <td style='text-align:center;'>" . $no . "</td>
-                                                        <td>$data[kode]</td>
-                                                        <td>$data[nama]</td>
-                                                        <td>$data[keterangan]</td>
-                                                        <td>" . rupiah($data['biaya']) . "</td>
-                                                        <td>$data[unit]</td>
-                                                        <td>$status</td>
+                                                        <td class='text-center align-middle'>" . $no . "</td>
+                                                        <td class='align-middle'>$data[kode]</td>
+                                                        <td class='align-middle'>$data[nama]</td>
+                                                        <td class='align-middle'>$data[keterangan]</td>
+                                                        <td class='text-right align-middle'>" . rupiah($data['biaya']) . "</td>
+                                                        <td class='align-middle'>$data[unit]</td>
+                                                        <td class='text-center align-middle'>$status</td>
                                                         </tr> ";
                                                     $no++;
                                                 }

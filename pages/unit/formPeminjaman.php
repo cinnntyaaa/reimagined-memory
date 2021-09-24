@@ -11,10 +11,6 @@
       </div>
     </div>
     <div class="section-body">
-      <h2 class="section-title">Peminjaman Aset Unit</h2>
-      <p class="section-lead m-4">
-        <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-      </p>
       <div class="row">
         <div class="col-12">
           <div class="card">
@@ -97,17 +93,15 @@
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <a class="modal-title h5"><u>Form Mutasi Aset Sementara</u></a>
+    <div class="modal-content black">
+      <div class="modal-header border-bottom p-3">
+        <a class="modal-title h4"><u>Form Mutasi Aset Sementara</u></a>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <div class="modal-body">
-        <div class="form-inline justify-content-center mb-3 larger">
-          <label for="ruangMutasi">
-            Ruang :
-          </label>
-          <select class="form-control ml-3" name="ruangMutasi" id="ruangMutasi" style="width: fit-content;">
+      <div class="modal-body p-3">
+        <div class="h5 form-inline justify-content-center">
+          <label>Pilih Ruang :</label>&nbsp;
+          <select name="ruangMutasi" id="ruangMutasi" style="width: fit-content;">
             <?php
             $sql = "SELECT ID, NAMA FROM ruang WHERE unit_id = $unit_id;";
             $query = mysqli_query($conn, $sql);
@@ -121,7 +115,7 @@
             ?>
           </select>
         </div>
-        <div class="text-center">
+        <div class="text-center mt-3">
           <button class='btn btn-primary larger' type='submit' id="submitMutasi">Submit</button>
         </div>
       </div>
@@ -138,6 +132,7 @@ include("template/bawah.php");
   function mutasi(asetid, unitid, ruangid) {
     $("#myModal").modal("show");
     document.getElementById("submitMutasi").onclick = (function() {
+      document.getElementById('submitMutasi').setAttribute("disabled", "disabled");
       var unit = "<?php echo $unit_id ?>";
       var ruangMutasi = $("#ruangMutasi").val();
       var userid = "<?php echo $user_id ?>";
@@ -155,7 +150,7 @@ include("template/bawah.php");
         dataType: 'html',
         success: function(data) {
           location.reload();
-          // console.log(data);
+          alert("Peminjaman Aset Berhasil!");
         }
       });
     });

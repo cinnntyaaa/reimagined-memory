@@ -11,10 +11,6 @@
       </div>
     </div>
     <div class="section-body">
-      <h2 class="section-title">Penerimaan Aset Unit</h2>
-      <p class="section-lead m-4">
-        <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-      </p>
       <div class="row">
         <div class="col-12">
           <div class="card">
@@ -22,15 +18,17 @@
               <div class="table-responsive">
                 <!-- Gradient divider -->
                 <hr data-content="REQUEST MUTASI ASET BELUM DIKONFIRMASI" class="hr-text">
-                <table class="table table-bordered table-md align-middle">
-                  <tr>
-                    <th>NO</th>
-                    <th>KODE</th>
-                    <th>NAMA</th>
-                    <th>UNIT PINJAM</th>
-                    <th>TANGGAL PINJAM</th>
-                    <th>PROSES</th>
-                  </tr>
+                <table class="table table-bordered table-md h6">
+                  <thead>
+                    <tr>
+                      <th>NO</th>
+                      <th>KODE</th>
+                      <th>NAMA</th>
+                      <th>UNIT PINJAM</th>
+                      <th>TANGGAL PINJAM</th>
+                      <th>PROSES</th>
+                    </tr>
+                  </thead>
                   <tbody>
                     <?php
                     $no = 1;
@@ -46,14 +44,14 @@
                       } while (mysqli_next_result($conn));
                       foreach ($outp[0] as $data) {
                         echo "
-                                    <tr>
-                                        <td style='text-align:center;'>" . $no . "</td>
-                                        <td>$data[KODE]</td>
-                                        <td>$data[NAMA]</td>
-                                        <td>$data[unitpinjam]</td>
-                                        <td>$data[TANGGAL_PINJAM]</td>
-                                        <td class='text-center'><button class='btn bg-transparent' onclick=response($data[idmutasi])><img width='30px' height='30px' src='../../assets/svg/view.svg'></button></td>
-                                    </tr> ";
+                          <tr>
+                              <td class='text-center align-middle'>" . $no . "</td>
+                              <td class='align-middle'>$data[KODE]</td>
+                              <td class='align-middle'>$data[NAMA]</td>
+                              <td class='align-middle'>$data[unitpinjam]</td>
+                              <td class='align-middle'>$data[TANGGAL_PINJAM]</td>
+                              <td class='text-center'><button class='btn bg-transparent' onclick=response($data[idmutasi])><img width='30px' src='../../assets/svg/view.svg'></button></td>
+                          </tr> ";
                         $no++;
                       }
                     }
@@ -63,14 +61,16 @@
               </div>
               <div class="table-responsive mt-3">
                 <hr data-content="REQUEST MUTASI ASET DITOLAK" class="hr-text">
-                <table class="table table-bordered table-md align-middle">
-                  <tr>
-                    <th>NO</th>
-                    <th>KODE</th>
-                    <th>NAMA</th>
-                    <th>UNIT PINJAM</th>
-                    <th>TANGGAL REJECT</th>
-                  </tr>
+                <table class="table table-bordered table-md h6">
+                  <thead>
+                    <tr>
+                      <th>NO</th>
+                      <th>KODE</th>
+                      <th>NAMA</th>
+                      <th>UNIT PINJAM</th>
+                      <th>TANGGAL REJECT</th>
+                    </tr>
+                  </thead>
                   <tbody>
                     <?php
                     $no = 1;
@@ -86,13 +86,13 @@
                       } while (mysqli_next_result($conn));
                       foreach ($outp[1] as $data) {
                         echo "
-                                    <tr>
-                                        <td style='text-align:center;'>" . $no . "</td>
-                                        <td>$data[KODE]</td>
-                                        <td>$data[NAMA]</td>
-                                        <td>$data[unitpinjam]</td>
-                                        <td>$data[TGL_REJECT]</td>
-                                    </tr> ";
+                          <tr>
+                              <td class='text-center align-middle'>" . $no . "</td>
+                              <td class='align-middle'>$data[KODE]</td>
+                              <td class='align-middle'>$data[NAMA]</td>
+                              <td class='align-middle'>$data[unitpinjam]</td>
+                              <td class='align-middle'>$data[TGL_REJECT]</td>
+                          </tr> ";
                         $no++;
                       }
                     }
@@ -102,15 +102,17 @@
               </div>
               <div class="table-responsive mt-3">
                 <hr data-content="REQUEST MUTASI ASET TELAH DISETUJUI" class="hr-text">
-                <table class="table table-bordered table-md align-middle">
-                  <tr>
-                    <th>NO</th>
-                    <th>KODE</th>
-                    <th>NAMA</th>
-                    <th>UNIT PINJAM</th>
-                    <th>TANGGAL ACC</th>
-                    <th>PROSES</th>
-                  </tr>
+                <table class="table table-bordered table-md h6">
+                  <thead>
+                    <tr>
+                      <th>NO</th>
+                      <th>KODE</th>
+                      <th>NAMA</th>
+                      <th>UNIT PINJAM</th>
+                      <th>TANGGAL ACC</th>
+                      <th>PROSES</th>
+                    </tr>
+                  </thead>
                   <tbody>
                     <?php
                     $no = 1;
@@ -126,14 +128,14 @@
                       } while (mysqli_next_result($conn));
                       foreach ($outp[2] as $data) {
                         echo "
-                                    <tr>
-                                        <td style='text-align:center;'>" . $no . "</td>
-                                        <td>$data[KODE]</td>
-                                        <td>$data[NAMA]</td>
-                                        <td>$data[unitpinjam]</td>
-                                        <td>$data[TANGGAL_ACC]</td>
-                                        <td class='text-center'><button class='btn bg-transparent' onclick=response2($data[idmutasi])><img width='45px' height='45px' src='../../assets/svg/view.svg'></button></td>
-                                    </tr> ";
+                          <tr>
+                              <td class='text-center align-middle'>" . $no . "</td>
+                              <td class='align-middle'>$data[KODE]</td>
+                              <td class='align-middle'>$data[NAMA]</td>
+                              <td class='align-middle'>$data[unitpinjam]</td>
+                              <td class='align-middle'>$data[TANGGAL_ACC]</td>
+                              <td class='text-center'><button class='btn bg-transparent' onclick=response2($data[idmutasi])><img width='30px' src='../../assets/svg/view.svg'></button></td>
+                          </tr> ";
                         $no++;
                       }
                     }
@@ -143,14 +145,16 @@
               </div>
               <div class="table-responsive mt-3">
                 <hr data-content="REQUEST MUTASI ASET DIKEMBALIKAN" class="hr-text">
-                <table class="table table-bordered table-md align-middle">
-                  <tr>
-                    <th>NO</th>
-                    <th>KODE</th>
-                    <th>NAMA</th>
-                    <th>UNIT PINJAM</th>
-                    <th>TANGGAL KEMBALI</th>
-                  </tr>
+                <table class="table table-bordered table-md h6">
+                  <thead>
+                    <tr>
+                      <th>NO</th>
+                      <th>KODE</th>
+                      <th>NAMA</th>
+                      <th>UNIT PINJAM</th>
+                      <th>TANGGAL KEMBALI</th>
+                    </tr>
+                  </thead>
                   <tbody>
                     <?php
                     $no = 1;
@@ -166,13 +170,13 @@
                       } while (mysqli_next_result($conn));
                       foreach ($outp[3] as $data) {
                         echo "
-                                    <tr>
-                                        <td style='text-align:center;'>" . $no . "</td>
-                                        <td>$data[KODE]</td>
-                                        <td>$data[NAMA]</td>
-                                        <td>$data[unitpinjam]</td>
-                                        <td>$data[TANGGAL_KEMBALI]</td>
-                                    </tr> ";
+                          <tr>
+                              <td class='text-center align-middle'>" . $no . "</td>
+                              <td class='align-middle'>$data[KODE]</td>
+                              <td class='align-middle'>$data[NAMA]</td>
+                              <td class='align-middle'>$data[unitpinjam]</td>
+                              <td class='align-middle'>$data[TANGGAL_KEMBALI]</td>
+                          </tr> ";
                         $no++;
                       }
                     }
@@ -190,43 +194,49 @@
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Respon Peminjaman</h4>
+    <div class="modal-content black">
+      <div class="modal-header border-bottom p-3">
+        <a class="modal-title h4"><u>Response Peminjaman</u></a>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <div class="modal-body">
-        <input type="radio" id="acc" name="acc" value="3">
-        <label for="acc">
-          <h5>ACC</h5>
-        </label><br>
-        <input type="radio" id="reject" name="acc" value="2">
-        <label for="reject">
-          <h5>REJECT</h5>
-        </label><br>
+      <div class="modal-body p-3">
+        <div class="h5">
+          <fieldset class="border p-2">
+            <legend class="w-auto">Pilih Response :</legend>
+            <input type="radio" id="acc" name="acc" value="3">
+            <label for="acc">
+              <h5>ACC</h5>
+            </label><br>
+            <input type="radio" id="reject" name="acc" value="2">
+            <label for="reject">
+              <h5>REJECT</h5>
+            </label>
+          </fieldset>
+        </div>
         <div class="text-center">
-          <button class='btn btn-sm bg-tomato text-white' type='submit' id='submit'>Submit</button>
+          <button class='btn btn-primary larger' type='submit' id='submit'>Submit</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <!-- Modal -->
 <div class="modal fade" id="myModal2" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Respon Peminjaman</h4>
+    <div class="modal-content black">
+      <div class="modal-header border-bottom p-3">
+        <a class="modal-title h4"><u>Form Pengembalian</u></a>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <div class="modal-body">
-        <input type="radio" id="back" name="back" value="4">
-        <label for="back">
-          <h5>TELAH KEMBALI</h5>
-        </label><br>
+      <div class="modal-body align-self-center p-3">
+        <div class="h5">
+          Apakah Aset Telah Dikembalikan?
+        </div>
         <div class="text-center">
-          <button class='btn btn-sm bg-tomato text-white' type='submit' id='submit2'>Submit</button>
+          <button class='btn btn-primary larger' type='submit' id='submit2'>Sudah</button>
+          <button class='btn btn-primary larger' type="button" class="close" data-dismiss="modal">Belum</button>
         </div>
       </div>
     </div>
@@ -241,6 +251,7 @@ include("template/bawah.php");
   function response(idmutasi) {
     $("#myModal").modal("show");
     document.getElementById("submit").onclick = (function() {
+      document.getElementById('submit').setAttribute("disabled", "disabled");
       var acc = $("[name='acc']:checked").val();
       var userid = "<?php echo $user_id ?>";
       $.ajax({
@@ -253,7 +264,12 @@ include("template/bawah.php");
         },
         dataType: 'html',
         success: function(data) {
-          location.reload();
+          if (!$('input[name=acc]:checked').val()) {
+            alert("Pilih Terlebih Dahulu!");
+            document.getElementById('submit').removeAttribute("disabled", "disabled");
+          } else {
+            location.reload();
+          }
           // console.log(data);
         }
       });
@@ -263,14 +279,13 @@ include("template/bawah.php");
   function response2(idmutasi) {
     $("#myModal2").modal("show");
     document.getElementById("submit2").onclick = (function() {
-      var back = $("[name='back']:checked").val();
+      document.getElementById('submit2').setAttribute("disabled", "disabled");
       var userid = "<?php echo $user_id ?>";
       $.ajax({
         url: 'createResponseMutasiKembali_unit.php',
         type: 'POST',
         data: {
           idmutasi: idmutasi,
-          back: back,
           userid: userid
         },
         dataType: 'html',

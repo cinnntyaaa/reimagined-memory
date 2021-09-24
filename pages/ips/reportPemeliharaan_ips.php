@@ -10,15 +10,12 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Laporan Pemeliharaan Aset</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
+                                <hr data-content="ASET UNIT BELUM DICEK DALAM BULAN INI" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
@@ -47,13 +44,13 @@
                                             foreach ($outp[0] as $data) {
                                                 echo "
                                                 <tr>
-                                                <td style='text-align:center;'>" . $no . "</td>
-                                                <td>$data[kode]</td>
-                                                <td>$data[nama]</td>
-                                                <td>$data[unit]</td>
-                                                <td>$data[ruang]</td>
-                                                <td>$data[kondisi]</td>
-                                                <td>$data[last_check]</td>
+                                                    <td class='text-center align-middle'>" . $no . "</td>
+                                                    <td class='align-middle'>$data[kode]</td>
+                                                    <td class='align-middle'>$data[nama]</td>
+                                                    <td class='align-middle'>$data[unit]</td>
+                                                    <td class='align-middle'>$data[ruang]</td>
+                                                    <td class='align-middle'>$data[kondisi]</td>
+                                                    <td class='align-middle'>$data[last_check]</td>
                                                 </tr> ";
                                                 $no++;
                                             }
@@ -63,6 +60,7 @@
                                 </table>
                             </div>
                             <div class="table-responsive">
+                                <hr data-content="ASET UNIT TELAH DICEK DALAM BULAN INI" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
@@ -91,13 +89,13 @@
                                             foreach ($outp[1] as $data) {
                                                 echo "
                                                 <tr>
-                                                <td style='text-align:center;'>$no</td>
-                                                <td>$data[kode]</td>
-                                                <td>$data[nama]</td>
-                                                <td>$data[unit]</td>
-                                                <td>$data[ruang]</td>
-                                                <td>$data[kondisi]</td>
-                                                <td>$data[last_check]</td>
+                                                    <td class='text-center align-middle'>$no</td>
+                                                    <td class='align-middle'>$data[kode]</td>
+                                                    <td class='align-middle'>$data[nama]</td>
+                                                    <td class='align-middle'>$data[unit]</td>
+                                                    <td class='align-middle'>$data[ruang]</td>
+                                                    <td class='align-middle'>$data[kondisi]</td>
+                                                    <td class='align-middle'>$data[last_check]</td>
                                                 </tr> ";
                                                 $no++;
                                             }

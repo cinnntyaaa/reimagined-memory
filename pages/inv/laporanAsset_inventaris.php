@@ -10,10 +10,6 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Laporan Pembelian Aset/Non Aset</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -29,12 +25,13 @@
                                 <button type="submit" name="submit" id="submit" class="btn btn-primary p-2 ml-2 larger">Cari</button>
                             </form>
                             <div class="table-responsive">
+                                <hr data-content="LAPORAN PEMBELIAN ASET BELUM TERVALUASI" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
                                             <th>NO</th>
                                             <th>TANGGAL</th>
-                                            <th>KODE</th>
+                                            <!-- <th>KODE</th> -->
                                             <th>NAMA</th>
                                             <th>NOMOR SERI</th>
                                             <th>HARGA</th>
@@ -63,16 +60,16 @@
                                                 foreach ($outp[0] as $data) {
                                                     echo "
                                                     <tr>
-                                                    <td style='text-align:center;'>" . $no . "</td>
-                                                    <td>$data[TANGGAL]</td>
-                                                    <td>$data[kode_memo]</td>
-                                                    <td>$data[NAMA]</td>
-                                                    <td>$data[NOMOR_SERI]</td>
-                                                    <td class='text-right'>" . rupiah($data['HARGA']) . "</td>
-                                                    <td class='text-right'>$data[JUMLAH]</td>
-                                                    <td>$data[KETERANGAN]</td>
-                                                    <td style='display:none'>$data[user_id]</td>
-                                                    <td style='display:none'>$data[user_beli]</td>
+                                                        <td class='text-center align-middle'>" . $no . "</td>
+                                                        <td class='align-middle'>$data[TANGGAL]</td>
+                                                        <td class='d-none'>$data[kode_memo]</td>
+                                                        <td class='align-middle'>$data[NAMA]</td>
+                                                        <td class='align-middle'>$data[NOMOR_SERI]</td>
+                                                        <td class='text-right align-middle'>" . rupiah($data['HARGA']) . "</td>
+                                                        <td class='text-right align-middle'>$data[JUMLAH]</td>
+                                                        <td class='align-middle'>$data[KETERANGAN]</td>
+                                                        <td class='d-none'>$data[user_id]</td>
+                                                        <td class='d-none'>$data[user_beli]</td>
                                                     </tr> ";
                                                     $no++;
                                                 }
@@ -83,20 +80,21 @@
                                 </table>
                             </div>
                             <div class="table-responsive">
+                                <hr data-content="LAPORAN PEMBELIAN ASET TELAH TERVALUASI" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
                                             <th>NO</th>
                                             <th>TANGGAL</th>
-                                            <th>KODE MEMO</th>
+                                            <!-- <th>KODE MEMO</th> -->
                                             <th>KODE BARANG</th>
                                             <th>NAMA</th>
                                             <th>NOMOR SERI</th>
-                                            <th>HARGA</th>
-                                            <th>JUMLAH</th>
+                                            <!-- <th>HARGA</th>
+                                            <th>JUMLAH</th> -->
                                             <th>KETERANGAN</th>
                                             <!-- <th>USER ID</th>
-                        <th>USER BELI</th> -->
+                                            <th>USER BELI</th> -->
                                             <th>STATUS</th>
                                         </tr>
                                     </thead>
@@ -147,20 +145,28 @@
                                                         $status = "<img width='30px' height='30px' src='../../assets/svg/forward.svg' title='FORWARD'>"; #FORWARD
                                                     }
                                                     echo "
-                                                    <tr>
-                                                    <td style='text-align:center;'>" . $no . "</td>
-                                                    <td>$data[TANGGAL]</td>
-                                                    <td>$data[kode_memo]</td>
-                                                    <td>$data[kode_barang]</td>
-                                                    <td>$data[NAMA]</td>
-                                                    <td>$data[NOMOR_SERI]</td>
-                                                    <td class='text-right'>" . rupiah($data['HARGA']) . "</td>
-                                                    <td class='text-right'>$data[JUMLAH]</td>
-                                                    <td>$data[KETERANGAN]</td>
-                                                    <td style='display:none'>$data[user_id]</td>
-                                                    <td style='display:none'>$data[user_beli]</td>
-                                                    <td class='text-center'>$status</th>
-                                                    </tr> ";
+                                                    <tr class='parent' id=" . $no . ">
+                                                        <td class='text-center align-middle'>" . $no . "</td>
+                                                        <td class='align-middle'>$data[TANGGAL]</td>
+                                                        <td class='d-none'>$data[kode_memo]</td>
+                                                        <td class='align-middle'>$data[kode_barang]</td>
+                                                        <td class='align-middle'>$data[NAMA]</td>
+                                                        <td class='align-middle'>$data[NOMOR_SERI]</td>
+                                                        <td class='d-none'>" . rupiah($data['HARGA']) . "</td>
+                                                        <td class='d-none'>$data[JUMLAH]</td>
+                                                        <td class='align-middle'>$data[KETERANGAN]</td>
+                                                        <td style='display:none'>$data[user_id]</td>
+                                                        <td style='display:none'>$data[user_beli]</td>
+                                                        <td class='text-center'>$status</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td colspan=2>Harga :</td>
+                                                        <td colspan=5>" . rupiah($data['HARGA']) . "</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td colspan=2>Jumlah :</td>
+                                                        <td colspan=5>$data[JUMLAH]</td>
+                                                    </tr>";
                                                     $no++;
                                                 }
                                             }
@@ -170,19 +176,20 @@
                                 </table>
                             </div>
                             <div class="table-responsive">
+                                <hr data-content="LAPORAN PEMBELIAN NON ASET" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
                                             <th>NO</th>
                                             <th>TANGGAL</th>
-                                            <th>KODE MEMO</th>
+                                            <!-- <th>KODE MEMO</th> -->
                                             <th>NAMA</th>
                                             <th>NOMOR SERI</th>
                                             <th>HARGA</th>
                                             <th>JUMLAH</th>
                                             <th>KETERANGAN</th>
                                             <!-- <th>USER ID</th>
-                        <th>USER BELI</th> -->
+                                            <th>USER BELI</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -206,16 +213,16 @@
                                                 foreach ($outp[2] as $data) {
                                                     echo "
                                                     <tr>
-                                                    <td style='text-align:center;'>" . $no . "</td>
-                                                    <td>$data[TANGGAL]</td>
-                                                    <td>$data[kode_memo]</td>
-                                                    <td>$data[NAMA]</td>
-                                                    <td>$data[NOMOR_SERI]</td>
-                                                    <td class='text-right'>" . rupiah($data['HARGA']) . "</td>
-                                                    <td class='text-right'>$data[JUMLAH]</td>
-                                                    <td>$data[KETERANGAN]</td>
-                                                    <td style='display:none'>$data[user_id]</td>
-                                                    <td style='display:none'>$data[user_beli]</td>
+                                                        <td class='text-center align-middle'>" . $no . "</td>
+                                                        <td class='align-middle'>$data[TANGGAL]</td>
+                                                        <td class='d-none'>$data[kode_memo]</td>
+                                                        <td class='align-middle'>$data[NAMA]</td>
+                                                        <td class='align-middle'>$data[NOMOR_SERI]</td>
+                                                        <td class='text-right align-middle'>" . rupiah($data['HARGA']) . "</td>
+                                                        <td class='text-right align-middle'>$data[JUMLAH]</td>
+                                                        <td class='align-middle'>$data[KETERANGAN]</td>
+                                                        <td class='d-none'>$data[user_id]</td>
+                                                        <td class='d-none'>$data[user_beli]</td>
                                                     </tr> ";
                                                     $no++;
                                                 }
@@ -244,6 +251,14 @@
             format: "yyyy-mm-dd",
             autoclose: true,
         });
+    });
+    $(document).ready(function() {
+        $('tr.parent')
+            .css("cursor", "pointer")
+            .attr("title", "Click to expand/collapse")
+            .click(function() {
+                $(this).siblings('.child-' + this.id).toggle();
+            });
     });
 </script>
 </body>

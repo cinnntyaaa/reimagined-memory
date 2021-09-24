@@ -10,29 +10,26 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Memo Pengadaan</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
+                            <hr data-content="MEMO PENGADAAN BELUM DIKONFIRMASI" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
                                             <th>NO</th>
-                                            <th>KODE</th>
+                                            <!-- <th>KODE</th> -->
                                             <th>JUDUL</th>
-                                            <th>KETERANGAN</th>
+                                            <!-- <th>KETERANGAN</th>
                                             <th>LATAR BELAKANG</th>
                                             <th>ATTACHMENT</th>
                                             <th>BIAYA</th>
-                                            <th>JUMLAH</th>
+                                            <th>JUMLAH</th> -->
                                             <th>PEMOHON</th>
                                             <th>UNIT</th>
-                                            <th>UNTUK</th>
+                                            <!-- <th>UNTUK</th> -->
                                             <th>PROSES</th>
                                         </tr>
                                     </thead>
@@ -57,20 +54,52 @@
                                                     $attach = "<a href='" . $dirUpload . $data['attach_memo'] . "'>'File Lampiran'</a>";
                                                 }
                                                 echo "
-                                                    <tr>
-                                                    <td class='text-center'>" . $no . "</td>
-                                                    <td>$data[KODE]</td>
-                                                    <td>$data[JUDUL]</td>
-                                                    <td>$data[KETERANGAN]</td>
-                                                    <td>$data[latar_memo]</td>
-                                                    <td>$attach</td>
-                                                    <td class='text-right'>" . rupiah($data['harga_memo']) . "</td>
-                                                    <td class='text-right'>$data[qty_memo]</td>
-                                                    <td>$data[pemohon]</td>
-                                                    <td>$data[unit]</td>
-                                                    <td>$data[untuk]</td>
-                                                    <td class='text-center'><button class='btn btn-primary' onclick=view($data[idmemo])><img width='30px' src='../../assets/svg/view.svg'></button></td>
-                                                    </tr> ";
+                                                    <tr class='parent' id=" . $no . ">
+                                                        <td class='text-center align-middle'>" . $no . "</td>
+                                                        <td class='d-none'>$data[KODE]</td>
+                                                        <td class='align-middle'>$data[JUDUL]</td>
+                                                        <td class='d-none'>$data[KETERANGAN]</td>
+                                                        <td class='d-none'>$data[latar_memo]</td>
+                                                        <td class='d-none'>$attach</td>
+                                                        <td class='d-none'>" . rupiah($data['harga_memo']) . "</td>
+                                                        <td class='d-none'>$data[qty_memo]</td>
+                                                        <td class='align-middle'>$data[pemohon]</td>
+                                                        <td class='align-middle'>$data[unit]</td>
+                                                        <td class='d-none'>$data[untuk]</td>
+                                                        <td class='text-center'><button class='btn bg-transparent' onclick=view($data[idmemo])><img width='30px' src='../../assets/svg/view.svg'></button></td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Kode :</td>
+                                                        <td colspan=4>$data[KODE]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Keterangan :</td>
+                                                        <td colspan=4>$data[KETERANGAN]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Latar Belakang :</td>
+                                                        <td colspan=4>$data[latar_memo]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>File :</td>
+                                                        <td colspan=4>$attach</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Biaya :</td>
+                                                        <td colspan=4>" . rupiah($data['harga_memo']) . "</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Jumlah :</td>
+                                                        <td colspan=4>$data[qty_memo]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Unit :</td>
+                                                        <td colspan=4>$data[unit]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Ruang :</td>
+                                                        <td colspan=4>$data[untuk]</td>
+                                                    </tr>";
                                                 $no++;
                                             }
                                         }
@@ -79,24 +108,25 @@
                                 </table>
                             </div>
                             <div class="table-responsive">
+                            <hr data-content="MEMO PENGADAAN TELAH DIKONFIRMASI" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
                                             <th>NO</th>
-                                            <th>KODE</th>
+                                            <!-- <th>KODE</th> -->
                                             <th>JUDUL</th>
-                                            <th>KETERANGAN</th>
+                                            <!-- <th>KETERANGAN</th>
                                             <th>LATAR BELAKANG</th>
                                             <th>ATTACHMENT MEMO</th>
                                             <th>BIAYA</th>
-                                            <th>JUMLAH</th>
+                                            <th>JUMLAH</th> -->
                                             <th>PEMOHON</th>
                                             <th>UNIT</th>
-                                            <th>UNTUK</th>
+                                            <!-- <th>UNTUK</th> -->
                                             <th>STATUS</th>
-                                            <th>DISPOSISI</th>
+                                            <!-- <th>DISPOSISI</th>
                                             <th>BIAYA DISPOSISI</th>
-                                            <th>JUMLAH DISPOSISI</th>
+                                            <th>JUMLAH DISPOSISI</th> -->
                                             <th>USER</th>
                                         </tr>
                                     </thead>
@@ -149,24 +179,68 @@
                                                 }
                                                 $biaya_dispo = ($data['biaya_dispo'] == "-" ? '-' : rupiah($data['biaya_dispo']));
                                                 echo "
-                                <tr>
-                                <td style='text-align:center;'>$no</td>
-                                <td>$data[KODE]</td>
-                                <td>$data[JUDUL]</td>
-                                <td>$data[KETERANGAN]</td>
-                                <td>$data[latar_memo]</td>
-                                <td>$attach2</td>
-                                <td class='text-right'>" . rupiah($data['harga_memo']) . "</td>
-                                <td class='text-right'>$data[qty_memo]</td>
-                                <td>$data[pemohon]</td>
-                                <td>$data[unit]</td>
-                                <td>$data[untuk]</td>
-                                <td class='text-center'>$status</td>
-                                <td>$data[disposisi]</td>
-                                <td class='text-right'>$biaya_dispo</td>
-                                <td class='text-right'>$data[qty_dispo]</td>
-                                <td>$data[user]</td>
-                                </tr> ";
+                                                    <tr class='parent' id=" . $no . ">
+                                                        <td class='text-center align-middle'>$no</td>
+                                                        <td class='d-none'>$data[KODE]</td>
+                                                        <td class='align-middle'>$data[JUDUL]</td>
+                                                        <td class='d-none'>$data[KETERANGAN]</td>
+                                                        <td class='d-none'>$data[latar_memo]</td>
+                                                        <td class='d-none'>$attach2</td>
+                                                        <td class='d-none'>" . rupiah($data['harga_memo']) . "</td>
+                                                        <td class='d-none'>$data[qty_memo]</td>
+                                                        <td class='align-middle'>$data[pemohon]</td>
+                                                        <td class='text-center align-middle'>$data[unit]</td>
+                                                        <td class='d-none'>$data[untuk]</td>
+                                                        <td class='text-center align-middle'>$status</td>
+                                                        <td class='d-none'>$data[disposisi]</td>
+                                                        <td class='d-none'>$biaya_dispo</td>
+                                                        <td class='d-none'>$data[qty_dispo]</td>
+                                                        <td class='align-middle'>$data[user]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Kode :</td>
+                                                        <td colspan=5>$data[KODE]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Keterangan :</td>
+                                                        <td colspan=5>$data[KETERANGAN]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Latar Belakang :</td>
+                                                        <td colspan=5>$data[latar_memo]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>File :</td>
+                                                        <td colspan=5>$attach2</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Biaya :</td>
+                                                        <td colspan=5>" . rupiah($data['harga_memo']) . "</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Jumlah :</td>
+                                                        <td colspan=5>$data[qty_memo]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Unit :</td>
+                                                        <td colspan=5>$data[unit]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Ruang :</td>
+                                                        <td colspan=5>$data[untuk]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Disposisi :</td>
+                                                        <td colspan=5>$data[disposisi]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Biaya Disposisi :</td>
+                                                        <td colspan=5>$biaya_dispo</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Jumlah Disposisi :</td>
+                                                        <td colspan=5>$data[qty_dispo]</td>
+                                                    </tr>";
                                                 $no++;
                                             }
                                         }
@@ -184,27 +258,28 @@
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div class="modal-content" style="color:black">
-            <div class="modal-header">
-                <a class="modal-title h5"><u>Diteruskan Kepada :</u></a>
+        <div class="modal-content black">
+            <div class="modal-header border-bottom p-3">
+                <a class="modal-title h4"><u>Diteruskan Kepada :</u></a>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body align-self-center">
-                <select class="form-control" name="forward" id="forward" style="width: fit-content;">
-                    <?php
-                    $sql = "SELECT ID, NAMA FROM `user` WHERE PRIVILEGE_ID = 4;";
-                    $query = mysqli_query($conn, $sql);
-                    ?>
-                    <?php if (mysqli_num_rows($query) > 0) { ?>
-                        <?php while ($row = mysqli_fetch_array($query)) { ?>
-                            <option value="<?php echo $row['ID']; ?>">
-                                <?php echo $row['NAMA'] ?></option>
-                        <?php } ?>
-                        <option value="3">Tim Tapis Barang</option>
-                    <?php }
-                    ?>
-                </select>
-                <!-- <input type="radio" id="direksi" name="forward" value="direksi" required>
+            <div class="modal-body p-3">
+                <div class="h5 text-center">
+                    <select name="forward" id="forward" style="width: fit-content;">
+                        <?php
+                        $sql = "SELECT ID, NAMA FROM `user` WHERE PRIVILEGE_ID = 4;";
+                        $query = mysqli_query($conn, $sql);
+                        ?>
+                        <?php if (mysqli_num_rows($query) > 0) { ?>
+                            <?php while ($row = mysqli_fetch_array($query)) { ?>
+                                <option value="<?php echo $row['ID']; ?>">
+                                    <?php echo $row['NAMA'] ?></option>
+                            <?php } ?>
+                            <option value="3">Tim Tapis Barang</option>
+                        <?php }
+                        ?>
+                    </select>
+                    <!-- <input type="radio" id="direksi" name="forward" value="direksi" required>
                 <label for="direksi">
                     <h6>Direksi</h6>
                 </label><br>
@@ -212,8 +287,9 @@
                 <label for="ttb">
                     <h6>Tim Tapis Barang</h6>
                 </label><br> -->
+                </div>
                 <div class="text-center">
-                    <button type='submit' id='submit' class="btn btn-primary larger mt-3">Submit</button>
+                    <button type='submit' id='submit' class="btn btn-primary larger">Submit</button>
                 </div>
             </div>
         </div>
@@ -229,6 +305,7 @@ include("../unit/template/bawah.php");
         $("#myModal").modal("show");
         var user_id = <?php echo $user_id ?>;
         document.getElementById("submit").onclick = (function() {
+            document.getElementById('submit').setAttribute("disabled", "disabled");
             // var forward = $("[name='forward']:checked").val();
             var forward = $("#forward").val();
             $.ajax({
@@ -255,6 +332,14 @@ include("../unit/template/bawah.php");
             });
         });
     }
+    $(document).ready(function() {
+        $('tr.parent')
+            .css("cursor", "pointer")
+            .attr("title", "Click to expand/collapse")
+            .click(function() {
+                $(this).siblings('.child-' + this.id).toggle();
+            });
+    });
 </script>
 </body>
 

@@ -47,10 +47,6 @@
         padding: 10px
     }
 
-    .modal-backdrop {
-        background-color: #64B5F6
-    }
-
     .line {
         background-color: #CFD8DC;
         height: 1px;
@@ -80,6 +76,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
+                            <hr data-content="MEMO PENGADAAN BELUM TERDISPOSISI" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
@@ -119,51 +116,47 @@
                                                     <td class='align-middle'>$data[pemohon]</td>
                                                     <td class='align-middle text-center'><button class='btn bg-transparent' onclick=view($data[idmemo])><img width='30px' src='../../assets/svg/view.svg'></button></td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
-                                                    <td colspan=2>Keterangan :</td>
-                                                    <td colspan=3>$data[KETERANGAN]</td>
-                                                </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Kode Memo :</td>
                                                     <td colspan=3>$data[KODE]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td  colspan=2>Keterangan :</td>
                                                     <td colspan=3>$data[KETERANGAN]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Latar Belakang :</td>
                                                     <td colspan=3>$data[latar_memo]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Biaya :</td>
                                                     <td colspan=3>" . rupiah($data['harga_memo']) . "</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Jumlah :</td>
                                                     <td colspan=3>$data[qty_memo]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Unit :</td>
                                                     <td colspan=3>$data[unit]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Ruang :</td>
                                                     <td colspan=3>$data[ruang]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Lampiran File :</td>
                                                     <td colspan=3>$attach</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Harga Rekomendasi :</td>
                                                     <td colspan=3>$harga_rekom</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Keterangan Rekomendasi :</td>
                                                     <td colspan=3>$data[KET_REKOM]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Keterangan Forward :</td>
                                                     <td colspan=3>$data[KET_FORWARD]</td>
                                                 </tr>";
@@ -175,6 +168,7 @@
                                 </table>
                             </div>
                             <div class="table-responsive">
+                            <hr data-content="MEMO PENGADAAN TELAH TERDISPOSISI" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
@@ -241,59 +235,55 @@
                                                    <td>$data[unit]</td>
                                                    <td class='text-center'>" . $status . "</td>
                                                    </tr>
-                                                   <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
-                                                    <td colspan=2>Keterangan :</td>
-                                                    <td colspan=4>$data[KETERANGAN]</td>
-                                                </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Kode Memo :</td>
                                                     <td colspan=4>$data[KODE]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td  colspan=2>Keterangan :</td>
                                                     <td colspan=4>$data[KETERANGAN]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Latar Belakang :</td>
                                                     <td colspan=4>$data[latar_memo]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Biaya :</td>
                                                     <td colspan=4>" . rupiah($data['harga_memo']) . "</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Jumlah :</td>
                                                     <td colspan=4>$data[qty_memo]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Unit :</td>
                                                     <td colspan=4>$data[unit]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Lampiran File :</td>
                                                     <td colspan=4>$attach2</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Disposisi :</td>
                                                     <td colspan=4>$data[disposisi]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Biaya Disposisi :</td>
                                                     <td colspan=4>" . rupiah($data['biaya_dispo']) . "</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Jumlah Disposisi :</td>
                                                     <td colspan=4>$data[qty_dispo]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Tanggal Disposisi :</td>
                                                     <td colspan=4>$data[tgl_dispo]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>PIC :</td>
                                                     <td colspan=4>$data[unit_dispo]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Tanggal Selesai :</td>
                                                     <td colspan=4>$data[tgl_done]</td>
                                                 </tr>";
@@ -305,6 +295,7 @@
                                 </table>
                             </div>
                             <div class="table-responsive">
+                            <hr data-content="MEMO PENGADAAN TERFORWARD" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
@@ -371,51 +362,47 @@
                                                     <td class='align-middle'>$data[pemohon]</td>
                                                     <td class='align-middle text-center'>$status</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
-                                                    <td colspan=2>Keterangan :</td>
-                                                    <td colspan=3>$data[KETERANGAN]</td>
-                                                </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A; border:none'>
                                                     <td colspan=2>Kode Memo :</td>
                                                     <td colspan=3>$data[KODE]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td  colspan=2>Keterangan :</td>
                                                     <td colspan=3>$data[KETERANGAN]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Latar Belakang :</td>
                                                     <td colspan=3>$data[latar_memo]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Biaya :</td>
                                                     <td colspan=3>" . rupiah($data['harga_memo']) . "</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Jumlah :</td>
                                                     <td colspan=3>$data[qty_memo]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Unit :</td>
                                                     <td colspan=3>$data[unit]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Ruang :</td>
                                                     <td colspan=3>$data[ruang]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Lampiran File :</td>
                                                     <td colspan=3>$attach</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Harga Rekomendasi :</td>
                                                     <td colspan=3>$harga_rekom</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Keterangan Rekomendasi :</td>
                                                     <td colspan=3>$data[KET_REKOM]</td>
                                                 </tr>
-                                                <tr class='child-" . $no . "' style='display: none; background-color:#51F34C'>
+                                                <tr class='child-" . $no . "' style='display: none; background-color:#8AFF8A'>
                                                     <td colspan=2>Keterangan Forward :</td>
                                                     <td colspan=3>$data[KET_FORWARD]</td>
                                                 </tr>
@@ -448,17 +435,17 @@
             <div class="line"></div>
             <div class="modal-body p-0">
                 <fieldset class="show" id="tab011">
-                    <div class="bg-light" id="memoView">
+                    <div id="memoView">
 
                     </div>
                 </fieldset>
                 <fieldset id="tab021">
-                    <div class="bg-light">
+                    <div>
                         <table class='table table-sm h6'>
                             <tr>
                                 <td class='align-middle text-right'>Forward Ke : </td>
                                 <td class='align-middle'>
-                                    <select class="form-control" id="forward" style="width: fit-content;">
+                                    <select id="forward">
                                         <?php
                                         $sql = "SELECT ID, NAMA FROM `user` WHERE PRIVILEGE_ID = 4 AND ID != 4;";
                                         $query = mysqli_query($conn, $sql);
@@ -478,7 +465,7 @@
                                 <td class='align-middle'><textarea rows='3' id='ketForward' style='width:325px'></textarea></td>
                             </tr>
                         </table>
-                        <div class='text-center mb-2 bg-light'>
+                        <div class='text-center mb-2'>
                             <button class='btn btn-primary larger' type='submit' id='submit2'>Submit</button>
                         </div>
                     </div>
@@ -487,7 +474,6 @@
             <div class="line"></div>
         </div>
     </div>
-</div>
 </div>
 <?php
 include("../unit/template/bawah.php");
@@ -514,6 +500,7 @@ include("../unit/template/bawah.php");
             }
         });
         document.getElementById("submit2").onclick = (function() {
+            document.getElementById('submit2').setAttribute("disabled", "disabled");
             var ketForward = $("#ketForward").val();
             var forward = $("#forward").val();
             $.ajax({
@@ -570,21 +557,12 @@ include("../unit/template/bawah.php");
 
     });
     $(document).ready(function() {
-        var $table = $('#myTable');
         $('tr.parent')
             .css("cursor", "pointer")
             .attr("title", "Click to expand/collapse")
             .click(function() {
                 $(this).siblings('.child-' + this.id).toggle();
             });
-        // $('tr[@class^=child-]').hide().children('td');
-
-        // var $table = $('#myTable');
-
-        // $table.on('expand-row.bs.table', function(e, index, row, $detail) {
-        //     var res = $(".child" + (index + 1)).html();
-        //     $detail.html(res);
-        // });
     });
 </script>
 </body>

@@ -10,10 +10,6 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Laporan Memo Pengadaan</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -88,25 +84,25 @@
                                                     $status = "<img width='30px' height='30px' src='../../assets/svg/forward.svg' title='FORWARD'>"; #FORWARD
                                                 }
                                                 echo "
-                                        <tr>
-                                        <td style='text-align:center;'>" . $no . "</td>
-                                        <td style='display:none'>$data[idmemo]</td>
-                                        <td>$data[tgl_memo]</td>
-                                        <td>$data[KODE]</td>
-                                        <td>$data[JUDUL]</td>
-                                        <td>$data[KETERANGAN]</td>
-                                        <td class='text-right'>" . rupiah($data['harga_memo']) . "</td>
-                                        <td class='text-right'>$data[qty_memo]</td>
-                                        <td>$data[pemohon]</td>
-                                        <td>$data[unit]</td>
-                                        <td>$status</td>
-                                        <td class='toggleDisplay'>$data[disposisi]</td>
-                                        <td class='text-right toggleDisplay'>" . rupiah($data['biaya_dispo']) . "</td>
-                                        <td class='text-right toggleDisplay'>$data[qty_dispo]</td>
-                                        <td class='toggleDisplay'>$data[tgl_dispo]</td>
-                                        <td class='toggleDisplay'>$data[unit_dispo]</td>
-                                        <td class='toggleDisplay'>$data[tgl_done]</td>
-                                        </tr> ";
+                                                <tr>
+                                                    <td style='text-align:center;'>" . $no . "</td>
+                                                    <td style='display:none'>$data[idmemo]</td>
+                                                    <td>$data[tgl_memo]</td>
+                                                    <td>$data[KODE]</td>
+                                                    <td>$data[JUDUL]</td>
+                                                    <td>$data[KETERANGAN]</td>
+                                                    <td class='text-right'>" . rupiah($data['harga_memo']) . "</td>
+                                                    <td class='text-right'>$data[qty_memo]</td>
+                                                    <td>$data[pemohon]</td>
+                                                    <td>$data[unit]</td>
+                                                    <td>$status</td>
+                                                    <td>$data[disposisi]</td>
+                                                    <td class='text-right>" . rupiah($data['biaya_dispo']) . "</td>
+                                                    <td class='text-right>$data[qty_dispo]</td>
+                                                    <td>$data[tgl_dispo]</td>
+                                                    <td>$data[unit_dispo]</td>
+                                                    <td>$data[tgl_done]</td>
+                                                </tr> ";
                                                 $no++;
                                             }
                                         }

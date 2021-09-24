@@ -4,43 +4,44 @@ $idmemo = $_POST['idmemo'];
 $id_dispo = $_POST['id_dispo'];
 $user_id = $_POST['user_id'];
 echo "
-            <table class='table' id='disposisi_view'>
-                <tr>
-                    <td style='text-align: right; border-top: none'>No. Faktur : </td>
-                    <td style='border-top: none'><input class='inputView' id='faktur' autocomplete='off'></td>
-                </tr>
-                <tr>
-                    <td style='text-align: right;'>Nama : </td>
-                    <td><input class='inputView' id='nama' autocomplete='off'></td>
-                </tr>
-                <tr>
-                    <td style='text-align: right'>Tanggal : </td>
-                    <td><input class='inputView' id='tanggal' type='text' autocomplete='off' required /></td>
-                </tr>
-                <tr>
-                    <td style='text-align: right'>Harga Satuan : </td>
-                    <td><input class='inputView' id='harga' autocomplete='off'></td>
-                </tr>
-                <tr>
-                    <td style='text-align: right'>Jumlah : </td>
-                    <td><input class='inputView' id='qty' autocomplete='off'></td>
-                </tr>
-                <tr>
-                    <td style='text-align: right'>Keterangan : </td>
-                    <td><textarea id='ket' style='width:300px' autocomplete='off'></textarea></td>
-                </tr>
-                <tr>
-                    <td style='text-align: right'>Nomor Seri : </td>
-                    <td><input class='inputView' id='no_seri' autocomplete='off'></td>
-                    <td id='id_memo' style='display:none'>" . $idmemo . "</td>
-                    <td id='id_dispo' style='display:none'>" . $id_dispo . "</td>
-                    <td id='user_id' style='display:none'>" . $user_id . "</td>
-                </tr>
-            </table>
-            <div class='text-center'>
-            <button class='btn btn-primary larger' type='submit' id='submit'>Submit</button>
-            </div>
-            ";
+<div class='h6'>
+    <table class='table' id='disposisi_view'>
+        <tr>
+            <td style='text-align: right; border-top: none'>No. Faktur : </td>
+            <td style='border-top: none'><input class='inputView' id='faktur' autocomplete='off'></td>
+        </tr>
+        <tr>
+            <td style='text-align: right;'>Nama : </td>
+            <td><input class='inputView' id='nama' autocomplete='off'></td>
+        </tr>
+        <tr>
+            <td style='text-align: right'>Tanggal : </td>
+            <td><input class='inputView' id='tanggal' type='text' autocomplete='off' required /></td>
+        </tr>
+        <tr>
+            <td style='text-align: right'>Harga Satuan : </td>
+            <td><input class='inputView' id='harga' autocomplete='off'></td>
+        </tr>
+        <tr>
+            <td style='text-align: right'>Jumlah : </td>
+            <td><input class='inputView' id='qty' autocomplete='off'></td>
+        </tr>
+        <tr>
+            <td style='text-align: right'>Keterangan : </td>
+            <td><textarea id='ket' style='width:300px' autocomplete='off'></textarea></td>
+        </tr>
+        <tr>
+            <td style='text-align: right'>Nomor Seri : </td>
+            <td><input class='inputView' id='no_seri' autocomplete='off'></td>
+            <td id='id_memo' style='display:none'>" . $idmemo . "</td>
+            <td id='id_dispo' style='display:none'>" . $id_dispo . "</td>
+            <td id='user_id' style='display:none'>" . $user_id . "</td>
+        </tr>
+    </table>
+</div>
+<div class='text-center'>
+    <button class='btn btn-primary larger' type='submit' id='submit'>Submit</button>
+</div>";
 
 ?>
 <script>
@@ -52,6 +53,7 @@ echo "
         });
     });
     document.getElementById("submit").onclick = (function() {
+        document.getElementById('submit').setAttribute("disabled", "disabled");
         var idmemo = $("#id_memo").text();
         var id_dispo = $("#id_dispo").text();
         var userid = $("#user_id").text();

@@ -10,10 +10,6 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Laporan Memo Pengadaan</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -33,21 +29,21 @@
                                     <thead>
                                         <tr>
                                             <th>NO</th>
-                                            <th>KODE</th>
+                                            <!-- <th>KODE</th> -->
                                             <th>JUDUL</th>
-                                            <th>KETERANGAN</th>
+                                            <!-- <th>KETERANGAN</th>
                                             <th>LATAR BELAKANG</th>
                                             <th>ATTACHMENT REKOM</th>
                                             <th>BIAYA</th>
-                                            <th>JUMLAH</th>
+                                            <th>JUMLAH</th> -->
                                             <th>PEMOHON</th>
                                             <th>UNIT</th>
-                                            <th>UNTUK</th>
+                                            <!-- <th>UNTUK</th> -->
                                             <th>STATUS</th>
-                                            <th>BIAYA REKOM</th>
+                                            <!-- <th>BIAYA REKOM</th>
                                             <th>DISPOSISI</th>
                                             <th>BIAYA DISPOSISI</th>
-                                            <th>JUMLAH DISPOSISI</th>
+                                            <th>JUMLAH DISPOSISI</th> -->
                                             <th>USER</th>
                                         </tr>
                                     </thead>
@@ -58,14 +54,14 @@
                                             $tgl_awal = $_POST['tgl_awal'];
                                             $tgl_akhir = $_POST['tgl_akhir'];
                                             $submit = $_POST['submit'];
-                                            $dirUpload = "file/";
+                                            $dirUpload = "../../file/";
                                             $sql = "CALL reportMemo_ttb ('" . $tgl_awal . "', '" . $tgl_akhir . "')";
                                             $query = mysqli_query($conn, $sql);
                                             while ($data = mysqli_fetch_array($query)) {
                                                 if ($data['attach_rekom'] == "") {
                                                     $attach = "-";
                                                 } else {
-                                                    $attach = "<a href='" . $dirUpload . $data['attach_rekom'] . "'>'File Lampiran Rekom'</a>";
+                                                    $attach = "<a target='_blank' href='" . $dirUpload . $data['attach_rekom'] . "'>'File Lampiran Rekom'</a>";
                                                 }
                                                 if ($data['STATUS'] == 0) {
                                                     $status = "<img width='30px' height='30px' src='../../assets/svg/filter.svg' title='FILTER'>"; #FILTER
@@ -96,26 +92,73 @@
                                                 }
                                                 $biaya_dispo = ($data['biaya_dispo'] == "-" ? '-' : rupiah($data['biaya_dispo']));
                                                 echo "
-                                            <tr>
-                                            <td style='text-align:center;'>" . $no . "</td>
-                                            <td style='display:none'>$data[idmemo]</td>
-                                            <td>$data[KODE]</td>
-                                            <td>$data[JUDUL]</td>
-                                            <td>$data[KETERANGAN]</td>
-                                            <td>$data[latar_memo]</td>
-                                            <td>$attach</td>
-                                            <td class='text-right'>" . rupiah($data['harga_memo']) . "</td>
-                                            <td class='text-right'>$data[qty_memo]</td>
-                                            <td>$data[pemohon]</td>
-                                            <td>$data[unit]</td>
-                                            <td>$data[untuk]</td>
-                                            <td>$status</td>
-                                            <td class='text-right'>" . rupiah($data['biaya_rekom']) . "</td>
-                                            <td>$data[disposisi]</td>
-                                            <td class='text-right'>$biaya_dispo</td>
-                                            <td class='text-right'>$data[qty_dispo]</td>
-                                            <td>$data[user]</td>
-                                            </tr> ";
+                                                <tr class='parent' id=" . $no . ">
+                                                    <td class='text-center align-middle'>$no</td>
+                                                    <td class='d-none'>$data[KODE]</td>
+                                                    <td class='align-middle'>$data[JUDUL]</td>
+                                                    <td class='d-none'>$data[KETERANGAN]</td>
+                                                    <td class='d-none'>$data[latar_memo]</td>
+                                                    <td class='d-none'>$attach</td>
+                                                    <td class='d-none'>" . rupiah($data['harga_memo']) . "</td>
+                                                    <td class='d-none'>$data[qty_memo]</td>
+                                                    <td class='align-middle'>$data[pemohon]</td>
+                                                    <td class='align-middle'>$data[unit]</td>
+                                                    <td class='d-none'>$data[untuk]</td>
+                                                    <td class='text-center align-middle'>$status</td>
+                                                    <td class='d-none'>" . rupiah($data['biaya_rekom']) . "</td>
+                                                    <td class='d-none'>$data[disposisi]</td>
+                                                    <td class='d-none'>$biaya_dispo</td>
+                                                    <td class='d-none'>$data[qty_dispo]</td>
+                                                    <td class='align-middle'>$data[user]</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Kode :</td>
+                                                        <td colspan=5>$data[KODE]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Keterangan :</td>
+                                                        <td colspan=5>$data[KETERANGAN]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Latar Belakang :</td>
+                                                        <td colspan=5>$data[latar_memo]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>File Rekom :</td>
+                                                        <td colspan=5>$attach</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Biaya :</td>
+                                                        <td colspan=5>" . rupiah($data['harga_memo']) . "</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Jumlah :</td>
+                                                        <td colspan=5>$data[qty_memo]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Unit :</td>
+                                                        <td colspan=5>$data[unit]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Ruang :</td>
+                                                        <td colspan=5>$data[untuk]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Biaya Rekom :</td>
+                                                        <td colspan=5>" . rupiah($data['biaya_rekom']) . "</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Disposisi :</td>
+                                                        <td colspan=5>$data[disposisi]</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Biaya Disposisi :</td>
+                                                        <td colspan=5>$biaya_dispo</td>
+                                                    </tr>
+                                                    <tr class='child-" . $no . "' style='display: none;'>
+                                                        <td>Jumlah Disposisi :</td>
+                                                        <td colspan=5>$data[qty_dispo]</td>
+                                                    </tr>";
                                                 $no++;
                                             }
                                         }
@@ -142,6 +185,14 @@
             format: "yyyy-mm-dd",
             autoclose: true,
         });
+    });
+    $(document).ready(function() {
+        $('tr.parent')
+            .css("cursor", "pointer")
+            .attr("title", "Click to expand/collapse")
+            .click(function() {
+                $(this).siblings('.child-' + this.id).toggle();
+            });
     });
 </script>
 </body>

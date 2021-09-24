@@ -10,10 +10,6 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Memo Pemeliharaan</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -33,10 +29,11 @@
                                         <?php }
                                         ?>
                                     </select>
-                                    <button class="btn btn-primary larger" type='submit' name='submit'>Pilih</button>
+                                    <button class="btn btn-primary p-2 larger" type='submit' name='submit'>Pilih</button>
                                 </form>
                             </div>
                             <div class="table-responsive">
+                                <hr data-content="DAFTAR ASET UNIT" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
@@ -69,15 +66,15 @@
                                                 foreach ($outp[0] as $data) {
                                                     echo "
                                                         <tr>
-                                                            <td style='text-align:center;'>" . $no . "</td>
-                                                            <td>$data[KODE]</td>
-                                                            <td>$data[nama]</td>
-                                                            <td style='display:none'>$data[jenis]</td>
-                                                            <td>$data[kategori]</td>
-                                                            <td>$data[golongan]</td>
-                                                            <td>$data[ruang]</td>
-                                                            <td>$data[kondisi]</td>
-                                                            <td class='text-center'><button class='btn bg-transparent' onclick=maintenance($data[ASET_ID],$data[DEPRESI_ID],$data[UNIT_ID],$data[RUANG_ID])><img width='30px' height='30px' src='../../assets/svg/view.svg'></button></td>
+                                                            <td class='text-center align-middle'>" . $no . "</td>
+                                                            <td class='align-middle'>$data[KODE]</td>
+                                                            <td class='align-middle'>$data[nama]</td>
+                                                            <td class='d-none'>$data[jenis]</td>
+                                                            <td class='align-middle'>$data[kategori]</td>
+                                                            <td class='align-middle'>$data[golongan]</td>
+                                                            <td class='align-middle'>$data[ruang]</td>
+                                                            <td class='align-middle'>$data[kondisi]</td>
+                                                            <td class='text-center align-middle'><button class='btn bg-transparent' onclick=maintenance($data[ASET_ID],$data[DEPRESI_ID],$data[UNIT_ID],$data[RUANG_ID])><img width='30px' src='../../assets/svg/view.svg'></button></td>
                                                         </tr> ";
                                                     $no++;
                                                 }
@@ -88,6 +85,7 @@
                                 </table>
                             </div>
                             <div class="table-responsive">
+                                <hr data-content="MEMO PEMELIHARAAN TERAJUKAN" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
@@ -147,14 +145,14 @@
                                                     }
                                                     echo "
                                                         <tr>
-                                                            <td style='text-align:center;'>" . $no . "</td>
-                                                            <td>$data[kode]</td>
-                                                            <td>$data[nama]</td>
-                                                            <td>$data[keterangan]</td>
-                                                            <td class='text-right'>" . rupiah($data['biaya']) . "</td>
-                                                            <td>$data[unit]</td>
-                                                            <td class='text-center'>$status</td>
-                                                            <td class='text-center'><button class='btn bg-transparent' onclick=hapus($data[ID])><img width='30px' height='30px' src='../../assets/svg/hapus.svg'></button></td>
+                                                            <td class='text-center align-middle'>" . $no . "</td>
+                                                            <td class='align-middle'>$data[kode]</td>
+                                                            <td class='align-middle'>$data[nama]</td>
+                                                            <td class='align-middle'>$data[keterangan]</td>
+                                                            <td class='text-right align-middle'>" . rupiah($data['biaya']) . "</td>
+                                                            <td class='align-middle'>$data[unit]</td>
+                                                            <td class='text-center align-middle'>$status</td>
+                                                            <td class='text-center align-middle'><button class='btn bg-transparent' onclick=hapus($data[ID])><img width='30px' height='30px' src='../../assets/svg/hapus.svg'></button></td>
                                                         </tr> ";
                                                     $no++;
                                                 }
@@ -174,24 +172,20 @@
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div class="modal-content" style="color:black">
-            <div class="modal-header">
-                <a class="modal-title h5"><u>Form Pemeliharaan</u></a>
+        <div class="modal-content black">
+            <div class="modal-header border-bottom p-3">
+                <a class="modal-title h4"><u>Form Pemeliharaan</u></a>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body align-self-center">
-                <table class="m-0" id='pemeliharaan'>
-                    <tr>
-                        <td style='text-align: right; border-top: none;'>Keterangan : </td>
-                        <td style="border-top: none;"><textarea id='ket' style='width:300px'></textarea></td>
-                    </tr>
-                    <tr>
-                        <td style='text-align: right'>Biaya : </td>
-                        <td><input type="text" class="inputView" id='biaya' autocomplete="off"></td>
-                    </tr>
-                </table>
+            <div class="modal-body">
+                <div class="h5">
+                    <label>Biaya :</label>
+                    <input type="text" class="inputView" id='biaya' autocomplete="off"><br><br>
+                    <label>Keterangan :</label>
+                    <textarea type="text" class="form-control" style="height: 200px;" name="ket" id="ket"></textarea>
+                </div>
                 <div class="text-center">
-                    <button type='submit' id='submitMaint' class="btn btn-primary larger mt-3">Submit</button>
+                    <button type='submit' id='submitMaint' class="btn btn-primary larger">Submit</button>
                 </div>
             </div>
         </div>
@@ -199,19 +193,24 @@
 </div>
 
 <div class="modal fade" id="myModal2" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <a class="modal-title h5">Hapus Memo</a>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body text-center">
-                <h5>Apakah Memo Ini Akan Dihapus?</h5>
-                <button type='submit' id='delete' class="btn bg-primary larger">YA</button>
-            </div>
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content black">
+      <div class="modal-header border-bottom p-3">
+        <a class="modal-title h4"><u>Hapus Memo</u></a>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body align-self-center p-3">
+        <div class="h5">
+        Apakah Memo Ini Akan Dihapus?
         </div>
+        <div class="text-center">
+          <button class='btn btn-primary larger' type='submit' id='delete'>Ya</button>
+          <button class='btn btn-primary larger' type="button" class="close" data-dismiss="modal">Tidak</button>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <?php
 include("../unit/template/bawah.php");
@@ -222,6 +221,7 @@ include("../unit/template/bawah.php");
     function maintenance(asetid, depreid, unitid, ruangid) {
         $("#myModal").modal("show");
         document.getElementById("submitMaint").onclick = (function() {
+            document.getElementById('submitMaint').setAttribute("disabled", "disabled");
             var user_id = "<?php echo $user_id ?>";
             var privilege_id = "<?php echo $privilege_id ?>";
             var ket = $("#ket").val();
@@ -252,6 +252,7 @@ include("../unit/template/bawah.php");
     function hapus(memoid) {
         $("#myModal2").modal("show");
         document.getElementById("delete").onclick = (function() {
+            document.getElementById('delete').setAttribute("disabled", "disabled");
             $.ajax({
                 url: 'deleteMemo_ips.php',
                 type: 'POST',

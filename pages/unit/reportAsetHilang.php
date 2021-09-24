@@ -11,10 +11,6 @@
       </div>
     </div>
     <div class="section-body">
-      <h2 class="section-title">Aset Hilang / Service</h2>
-      <p class="section-lead m-4">
-        <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-      </p>
       <div class="row">
         <div class="col-12">
           <div class="card">
@@ -76,7 +72,7 @@
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
-    <div class="modal-content" style="color:black">
+    <div class="modal-content black">
       <div class="modal-header border-bottom p-3">
         <a class="modal-title h4"><u>Form Pemeliharaan</u></a>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -98,7 +94,7 @@
             ?>
           </select><br><br>
           <label>Keterangan :</label>
-          <textarea type="text" class="form-control" style="height: 150px;" name="ket" id="ket"></textarea>
+          <textarea type="text" class="form-control" style="height: 250px;" name="ket" id="ket"></textarea>
         </div>
         <div class="text-center">
           <button type='submit' id='submitMaint' class="btn btn-primary larger">Submit</button>
@@ -116,6 +112,7 @@ include("template/bawah.php");
   function maintenance(asetid, depreid, unitid, userid) {
     $("#myModal").modal("show");
     document.getElementById("submitMaint").onclick = (function() {
+      document.getElementById('submitMaint').setAttribute("disabled", "disabled");
       var kondisi = $("#kondisi").val();
       var ket = $("#ket").val();
       $.ajax({
@@ -132,7 +129,6 @@ include("template/bawah.php");
         dataType: 'html',
         success: function(data) {
           location.reload();
-          // console.log(data);
         }
       });
     });

@@ -11,15 +11,12 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Memo Lelang</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
+                                <hr data-content="MEMO ASET BELUM TERLELANG" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
@@ -68,6 +65,7 @@
                                 </table>
                             </div>
                             <div class="table-responsive">
+                                <hr data-content="MEMO ASET TERLELANG" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
@@ -123,41 +121,34 @@
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div class="modal-content" style="color:black">
-            <div class="modal-header">
-                <a class="modal-title h5"><u>Form Lelang Aset</u></a>
+        <div class="modal-content black">
+            <div class="modal-header border-bottom p-3">
+                <a class="modal-title h4"><u>Form Lelang Aset</u></a>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body align-self-center">
-                <table class="table" style="font-size: medium;">
-                    <tr>
-                        <td style='text-align: right'>Kondisi : </td>
-                        <td><select name="kondisi" id="kondisi" style="width: fit-content;">
-                                <?php
-                                $sql = "SELECT ID, NAMA FROM kondisi WHERE ID IN(9,10,11);";
-                                $query = mysqli_query($conn, $sql);
-                                ?>
-                                <?php if (mysqli_num_rows($query) > 0) { ?>
-                                    <?php while ($row = mysqli_fetch_array($query)) { ?>
-                                        <option value="<?php echo $row['ID']; ?>">
-                                            <?php echo $row['NAMA'] ?></option>
-                                    <?php } ?>
-                                <?php }
-                                ?>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style='text-align: right'>Keterangan : </td>
-                        <td><textarea id='ket' style='width:300px'></textarea></td>
-                    </tr>
-                    <tr>
-                        <td style='text-align: right'>Harga : </td>
-                        <td><input class='inputView' id='harga' autocomplete="off"></td>
-                    </tr>
-                </table>
+            <div class="modal-body p-3">
+                <div class="h5">
+                    <label>Pilih Kondisi :</label>
+                    <select id="kondisi" name="kondisi">
+                        <?php
+                        $sql = "SELECT ID, NAMA FROM kondisi WHERE ID IN(9,10,11);";
+                        $query = mysqli_query($conn, $sql);
+                        ?>
+                        <?php if (mysqli_num_rows($query) > 0) { ?>
+                            <?php while ($row = mysqli_fetch_array($query)) { ?>
+                                <option value="<?php echo $row['ID']; ?>">
+                                    <?php echo $row['NAMA'] ?></option>
+                            <?php } ?>
+                        <?php }
+                        ?>
+                    </select><br><br>
+                    <label>Harga :</label>
+                    <input type="text" class="inputView" id="harga"><br><br>
+                    <label>Keterangan :</label>
+                    <textarea type="text" class="form-control" style="height: 100px;" name="ket" id="ket"></textarea>
+                </div>
                 <div class="text-center">
-                    <button type='submit' id='submit' class="btn btn-primary larger mt-3">Submit</button>
+                    <button type='submit' id='submit' class="btn btn-primary larger">Submit</button>
                 </div>
             </div>
         </div>
@@ -172,8 +163,10 @@ include("../unit/template/bawah.php");
     function view(asetid) {
         $("#myModal").modal("show");
         document.getElementById("submit").onclick = (function() {
+            document.getElementById('submit').setAttribute("disabled", "disabled");
             var kondisi = $("#kondisi").val();
-            var harga = $("#harga").val();
+            var harga2 = $("#harga").val();
+            var harga = harga2.replace(/[^,\d]/g, "");
             var ket = $("#ket").val();
             var user_id = "<?php echo $user_id ?>";
             $.ajax({
@@ -196,6 +189,30 @@ include("../unit/template/bawah.php");
                 }
             });
         })
+    }
+    var rupiah = document.getElementById("harga");
+    rupiah.addEventListener("keyup", function(e) {
+        // tambahkan 'Rp.' pada saat form di ketik
+        // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
+        rupiah.value = formatRupiah(this.value);
+    });
+
+    /* Fungsi formatRupiah */
+    function formatRupiah(angka, prefix) {
+        var number_string = angka.replace(/[^,\d]/g, "").toString(),
+            split = number_string.split(","),
+            sisa = split[0].length % 3,
+            rupiah = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+        // tambahkan titik jika yang di input sudah menjadi angka ribuan
+        if (ribuan) {
+            separator = sisa ? "." : "";
+            rupiah += separator + ribuan.join(".");
+        }
+
+        rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+        return prefix == undefined ? rupiah : rupiah ? rupiah : "";
     }
 </script>
 </body>

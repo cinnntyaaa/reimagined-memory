@@ -10,10 +10,6 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Daftar Permintaan Servis</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -47,17 +43,17 @@
                                             } while (mysqli_next_result($conn));
                                             foreach ($outp as $data) {
                                                 echo "
-                                                        <tr>
-                                                            <td style='text-align:center;'>" . $no . "</td>
-                                                            <td>$data[KODE]</td>
-                                                            <td>$data[nama]</td>
-                                                            <td style='display:none'>$data[jenis]</td>
-                                                            <td>$data[kategori]</td>
-                                                            <td>$data[golongan]</td>
-                                                            <td>$data[ruang]</td>
-                                                            <td>$data[kondisi]</td>
-                                                            <td class='text-center'><button class='btn bg-transparent' onclick=maintenance($data[ASET_ID],$data[DEPRESI_ID],$data[UNIT_ID],$user_id)><img width='30px' src='../../assets/svg/view.svg'></button></td>
-                                                        </tr> ";
+                                                <tr>
+                                                    <td class='text-center align-middle'>" . $no . "</td>
+                                                    <td class='align-middle'>$data[KODE]</td>
+                                                    <td class='align-middle'>$data[nama]</td>
+                                                    <td class='d-none'>$data[jenis]</td>
+                                                    <td class='align-middle'>$data[kategori]</td>
+                                                    <td class='align-middle'>$data[golongan]</td>
+                                                    <td class='align-middle'>$data[ruang]</td>
+                                                    <td class='align-middle'>$data[kondisi]</td>
+                                                    <td class='text-center align-middle'><button class='btn bg-transparent' onclick=maintenance($data[ASET_ID],$data[DEPRESI_ID],$data[UNIT_ID],$user_id)><img width='30px' src='../../assets/svg/view.svg'></button></td>
+                                                </tr> ";
                                                 $no++;
                                             }
                                         }
@@ -75,27 +71,31 @@
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div class="modal-content" style="color:black">
-            <div class="modal-header">
-                <a class="modal-title h5"><u>Form Request Service</u></a>
+        <div class="modal-content black">
+            <div class="modal-header border-bottom p-3">
+                <a class="modal-title h4"><u>Form Request Service</u></a>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body align-self-center">
-                <label>Kondisi : </label>
-                <select id="kondisi" name="kondisi" style="width: fit-content;">
-                    <?php
-                    $sql = "SELECT id, NAMA FROM kondisi WHERE ID < 7 AND ID NOT IN(5) AND AKTIF = 1";
-                    $query = mysqli_query($conn, $sql);
-                    ?>
-                    <?php if (mysqli_num_rows($query) > 0) { ?>
-                        <?php while ($row = mysqli_fetch_array($query)) { ?>
-                            <option value="<?php echo $row['id']; ?>">
-                                <?php echo $row['NAMA'] ?></option>
-                        <?php } ?>
-                    <?php }
-                    ?>
-                </select><br>
-                <button type='submit' id='submitMaint' class="btn btn-sm bg-tomato text-white mt-3">Submit</button>
+            <div class="modal-body align-self-center p-3">
+                <div class="h5">
+                    <label>Pilih Kondisi : </label>
+                    <select id="kondisi" name="kondisi" style="width: fit-content;">
+                        <?php
+                        $sql = "SELECT id, NAMA FROM kondisi WHERE ID < 7 AND ID NOT IN(5) AND AKTIF = 1";
+                        $query = mysqli_query($conn, $sql);
+                        ?>
+                        <?php if (mysqli_num_rows($query) > 0) { ?>
+                            <?php while ($row = mysqli_fetch_array($query)) { ?>
+                                <option value="<?php echo $row['id']; ?>">
+                                    <?php echo $row['NAMA'] ?></option>
+                            <?php } ?>
+                        <?php }
+                        ?>
+                    </select>
+                </div>
+                <div class='text-center'>
+                    <button type='submit' id='submitMaint' class="btn btn-primary larger">Submit</button>
+                </div>
             </div>
         </div>
     </div>
@@ -109,6 +109,7 @@ include("../unit/template/bawah.php");
     function maintenance(asetid, depreid, unit, userid) {
         $("#myModal").modal("show");
         document.getElementById("submitMaint").onclick = (function() {
+            document.getElementById('submitMaint').setAttribute("disabled", "disabled");
             var kondisi = $("#kondisi").val();
             $.ajax({
                 url: 'createKondisi.php',

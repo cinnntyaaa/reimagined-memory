@@ -43,7 +43,7 @@ if (mysqli_multi_query($conn, $sql)) {
                 </tr>
                 <tr>
                     <td class='align-middle text-right''>Jumlah : </td>
-                    <td class='align-middle'>" . $data['qty_memo'] . "<input class='inputView' style='margin-left:132px' id='qty_memo' value=" . $data['qty_memo'] . "></td>
+                    <td class='align-middle'>" . $data['qty_memo'] . "<input class='inputView' style='margin-left:149px' id='qty_memo' value=" . $data['qty_memo'] . "></td>
                 </tr>
                 <tr>
                     <td class='align-middle text-right'>Pemohon : </td>
@@ -114,6 +114,7 @@ if (mysqli_multi_query($conn, $sql)) {
     }
 
     document.getElementById("submit").onclick = (function() {
+        document.getElementById('submit').setAttribute("disabled", "disabled");
         var idmemo = $("#id_memo").text();
         var acc = $("#acc").val();
         var ket = $("#ket").val();

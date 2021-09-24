@@ -11,14 +11,10 @@
       </div>
     </div>
     <div class="section-body">
-      <h2 class="section-title">Buat Memo Baru</h2>
-      <p class="section-lead m-4">
-        <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-      </p>
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <div class="card-body" id="memo">
+            <div class="card-body">
               <form action="newMemo.php" method="post" enctype="multipart/form-data">
                 <div class="form-row">
                   <div class="form-group col-md-6">
@@ -79,7 +75,7 @@
                   <textarea class="form-control" id="latar" rows="4" name="latar" style="height: 100px;"></textarea>
                 </div>
                 <div class="card-footer text-center">
-                  <input type="submit" name="submit" value="Submit" class="btn btn-primary" style="font-size: larger;">
+                  <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-primary larger fw-normal">
                 </div>
               </form>
             </div>
@@ -94,7 +90,7 @@ $nomor = $_POST['nomor'];
 $judul = $_POST['judul'];
 $ket = $_POST['ket'];
 $latar = $_POST['latar'];
-$folder = "file/";
+$folder = "../../file/";
 $nama_file = $_FILES['berkas']['name'];
 $file = $folder . $nama_file;
 $biaya = str_replace('.', '', $_POST['biaya']);
@@ -143,6 +139,31 @@ include("template/bawah.php");
 
 <!-- Page Specific JS File -->
 <script>
+  var rupiah = document.getElementById("biaya");
+  rupiah.addEventListener("keyup", function(e) {
+    // tambahkan 'Rp.' pada saat form di ketik
+    // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
+    rupiah.value = formatRupiah(this.value);
+  });
+
+  /* Fungsi formatRupiah */
+  function formatRupiah(angka, prefix) {
+    var number_string = angka.replace(/[^,\d]/g, "").toString(),
+      split = number_string.split(","),
+      sisa = split[0].length % 3,
+      rupiah = split[0].substr(0, sisa),
+      ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+    // tambahkan titik jika yang di input sudah menjadi angka ribuan
+    if (ribuan) {
+      separator = sisa ? "." : "";
+      rupiah += separator + ribuan.join(".");
+    }
+
+    rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+    return prefix == undefined ? rupiah : rupiah ? rupiah : "";
+  }
+
   function validate(evt) {
     if (evt.keyCode != 9 && evt.keyCode != 8 && evt.keyCode != 46) {
       var theEvent = evt || window.event;

@@ -10,32 +10,29 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Memo Pengadaan</h2>
-            <p class="section-lead m-4">
-                <!-- Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms. -->
-            </p>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
+                                <hr data-content="MEMO PENGADAAN YANG BELUM TERBELI" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
                                             <th>NO</th>
                                             <th>TANGGAL</th>
                                             <th>PIC</th>
-                                            <th>KODE</th>
+                                            <!-- <th>KODE</th> -->
                                             <th>JUDUL</th>
-                                            <th>KETERANGAN</th>
+                                            <!-- <th>KETERANGAN</th> -->
                                             <th>PEMOHON</th>
                                             <th>UNIT</th>
                                             <th>STATUS</th>
-                                            <th>DISPOSISI</th>
+                                            <!-- <th>DISPOSISI</th>
                                             <th>BIAYA DISPOSISI</th>
                                             <th>JUMLAH</th>
                                             <th>ATTACHMENT REKOM</th>
-                                            <th>TANGGAL DISPOSISI</th>
+                                            <th>TANGGAL DISPOSISI</th> -->
                                             <th>PROSES</th>
                                             <th>REJECT</th>
                                         </tr>
@@ -88,24 +85,52 @@
                                                     $attach = "<a href='" . $dirUpload . $data['attach_rekom'] . "'>'File Lampiran Rekom'</a>";
                                                 }
                                                 echo "
-                                            <tr>
-                                              <td style='text-align:center;'>" . $no . "</td>
-                                              <td>$data[tgl_memo]</td>
-                                              <td>$data[pic]</td>
-                                              <td>$data[KODE]</td>
-                                              <td>$data[JUDUL]</td>
-                                              <td>$data[KETERANGAN]</td>
-                                              <td>$data[pemohon]</td>
-                                              <td>$data[unit]</td>
-                                              <td class='text-center'>$status</td>
-                                              <td>$data[disposisi]</td>
-                                              <td class='text-right'>" . rupiah($data['biaya_dispo']) . "</td>
-                                              <td class='text-right'>$data[qty_dispo]</td>
-                                              <td>$attach</td>
-                                              <td>$data[tgl_dispo]</td>
-                                              <td><button class='btn bg-transparent' onclick=view($data[idmemo],$data[id_dispo])><img width='30px' height='30px' src='../../assets/svg/view.svg'></button></td>
-                                              <td><button class='btn bg-transparent' onclick=reject($data[idmemo],$data[id_dispo])><img width='30px' height='30px' src='../../assets/svg/hapus.svg'></button></td>
-                                            </tr> ";
+                                                <tr class='parent' id=" . $no . ">
+                                                    <td class='text-center align-middle'>" . $no . "</td>
+                                                    <td class='align-middle'>$data[tgl_memo]</td>
+                                                    <td class='align-middle'>$data[pic]</td>
+                                                    <td class='d-none'>$data[KODE]</td>
+                                                    <td class='align-middle'>$data[JUDUL]</td>
+                                                    <td class='d-none'>$data[KETERANGAN]</td>
+                                                    <td class='align-middle'>$data[pemohon]</td>
+                                                    <td class='align-middle'>$data[unit]</td>
+                                                    <td class='text-center align-middle'>$status</td>
+                                                    <td class='d-none'>$data[disposisi]</td>
+                                                    <td class='d-none'>" . rupiah($data['biaya_dispo']) . "</td>
+                                                    <td class='d-none'>$data[qty_dispo]</td>
+                                                    <td class='d-none'>$attach</td>
+                                                    <td class='d-none'>$data[tgl_dispo]</td>
+                                                    <td class='text-center align-middle'><button class='btn bg-transparent' onclick=view($data[idmemo],$data[id_dispo])><img width='30px' src='../../assets/svg/view.svg'></button></td>
+                                                    <td class='text-center align-middle'><button class='btn bg-transparent' onclick=reject($data[idmemo],$data[id_dispo])><img width='30px' src='../../assets/svg/hapus.svg'></button></td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Kode :</td>
+                                                    <td colspan=7>$data[KODE]</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Keterangan :</td>
+                                                    <td colspan=7>$data[KETERANGAN]</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Disposisi :</td>
+                                                    <td colspan=7>$data[disposisi]</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Biaya Disposisi :</td>
+                                                    <td colspan=7>" . rupiah($data['biaya_dispo']) . "</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Jumlah Disposisi :</td>
+                                                    <td colspan=7>$data[qty_dispo]</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>File :</td>
+                                                    <td colspan=7>$attach</td>
+                                                </tr>
+                                                <tr class='child-" . $no . "' style='display: none;'>
+                                                    <td colspan=2>Tgl Disposisi :</td>
+                                                    <td colspan=7>$data[tgl_dispo]</td>
+                                                </tr>";
                                                 $no++;
                                             }
                                         }
@@ -114,12 +139,13 @@
                                 </table>
                             </div>
                             <div class="table-responsive">
+                                <hr data-content="MEMO PENGADAAN YANG TELAH TERBELI" class="hr-text">
                                 <table class="table table-bordered table-md h6">
                                     <thead>
                                         <tr>
                                             <th>NO</th>
                                             <th>TANGGAL</th>
-                                            <th>KODE</th>
+                                            <!-- <th>KODE</th> -->
                                             <th>NAMA</th>
                                             <th>NOMOR SERI</th>
                                             <th>HARGA</th>
@@ -143,14 +169,14 @@
                                             foreach ($outp[1] as $data) {
                                                 echo "
                                             <tr>
-                                              <td style='text-align:center;'>" . $no . "</td>
-                                              <td>$data[TANGGAL]</td>
-                                              <td>$data[KODE]</td>
-                                              <td>$data[NAMA]</td>
-                                              <td>$data[NOMOR_SERI]</td>
-                                              <td class='text-right'>" . rupiah($data['HARGA']) . "</td>
-                                              <td class='text-right'>$data[JUMLAH]</td>
-                                              <td>$data[KETERANGAN]</td>
+                                              <td class='text-center align-middle'>" . $no . "</td>
+                                              <td class='align-middle'>$data[TANGGAL]</td>
+                                              <td class='d-none'>$data[KODE]</td>
+                                              <td class='align-middle'>$data[NAMA]</td>
+                                              <td class='align-middle'>$data[NOMOR_SERI]</td>
+                                              <td class='text-right align-middle'>" . rupiah($data['HARGA']) . "</td>
+                                              <td class='text-right align-middle'>$data[JUMLAH]</td>
+                                              <td class='align-middle'>$data[KETERANGAN]</td>
                                             </tr> ";
                                                 $no++;
                                             }
@@ -169,12 +195,12 @@
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div class="modal-content" style="color:black">
-            <div class="modal-header">
-                <a class="modal-title h5"><u>Form Pembelian Aset</u></a>
+        <div class="modal-content black">
+            <div class="modal-header border-bottom p-3">
+                <a class="modal-title h4"><u>Form Pembelian Aset</u></a>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body align-self-center" id="disposisiView">
+            <div class="modal-body p-2" id="disposisiView">
 
             </div>
         </div>
@@ -184,14 +210,19 @@
 <div class="modal fade" id="myModal2" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div class="modal-content" style="color:black">
-            <div class="modal-header">
-                <a class="modal-title h5"><u>Rincian Memo</u></a>
+        <div class="modal-content black">
+            <div class="modal-header border-bottom p-3">
+                <a class="modal-title h4"><u>Rincian Memo</u></a>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body align-self-center">
-                <h5>Apakah anda yakin akan membatalkan pembelian?</h5>
-                <button type='submit' id='submit2' class="btn btn-primary larger">YA</button>
+            <div class="modal-body">
+                <div class="h5 text-center">
+                    Apakah anda yakin akan membatalkan pembelian?
+                </div>
+                <div class="text-center">
+                    <button class='btn btn-primary larger' type='submit' id='submit2'>Ya</button>
+                    <button class='btn btn-primary larger' type="button" class="close" data-dismiss="modal">Tidak</button>
+                </div>
             </div>
         </div>
     </div>
@@ -227,6 +258,7 @@ include("../unit/template/bawah.php");
         $("#myModal2").modal("show");
         var user_id = <?php echo $user_id ?>;
         document.getElementById("submit2").onclick = (function() {
+            document.getElementById('submit2').setAttribute("disabled", "disabled");
             $.ajax({
                 url: 'rejectInventaris.php',
                 type: 'POST',
@@ -245,6 +277,14 @@ include("../unit/template/bawah.php");
             });
         });
     }
+    $(document).ready(function() {
+        $('tr.parent')
+            .css("cursor", "pointer")
+            .attr("title", "Click to expand/collapse")
+            .click(function() {
+                $(this).siblings('.child-' + this.id).toggle();
+            });
+    });
 </script>
 </body>
 
